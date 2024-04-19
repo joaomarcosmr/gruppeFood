@@ -5,3 +5,11 @@
     margin: 0px;
     font-family: "Montserrat", sans-serif;
 }
+
+.homeApp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+    height: calc(100vh - 70px);
+}
