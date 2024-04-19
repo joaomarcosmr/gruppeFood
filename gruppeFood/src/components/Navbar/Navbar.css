@@ -1,0 +1,53 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    height: 70px;
+}
+
+.navbarImage img{
+    width: 80px;
+    height: 60px;
+}
+
+.navbarSessaoUsuario{
+    display: flex;
+    align-items: center;
+}
+
+.navbarCarrinho{
+    margin-left: 25px;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.navbarCarrinho:hover{
+    transition: 1s;
+    background-color: rgba(151, 151, 151, 0.158);
+}
+
+.iconeNav{
+    cursor: pointer;
+    height: 21px;
+    width: 21px;
+    fill: rgb(5, 185, 59);
+}
+
+.navbarCarrinho{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.navbarCarrinho .navBarInfoCliente{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.navbarCarrinho .navBarInfoCliente span{
+    font-size: 11px;
+    color: grey;
+}
