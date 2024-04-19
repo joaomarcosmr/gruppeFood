@@ -1,13 +1,17 @@
 .navbar{
+    background-color: white;
+    position: fixed;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid rgb(192, 192, 192);
     height: 70px;
+    z-index: 999999999999999999999;
 }
 
 .navbarImage img{
+    cursor: pointer;
     width: 80px;
     height: 60px;
 }
@@ -36,6 +40,7 @@
 }
 
 .navbarCarrinho{
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-bottom: 4px;
