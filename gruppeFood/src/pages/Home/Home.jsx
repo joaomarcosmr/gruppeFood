@@ -1,6 +1,10 @@
 import React from 'react'
 import './Home.css'
 
+import Restaurantes from '../../components/Restaurantes/Restaurantes'
+import ComidasRecomendadas from '../../components/ComidasRecomendadas/ComidasRecomendadas'
+import Footer from '../../components/Footer/Footer'
+
 const Home = () => {
   return (
     <section className='homeApp'>
@@ -46,19 +50,32 @@ const Home = () => {
         </div>
 
         <div className="homeComidasRecomendadas">
-            <h3>Comidas Recomendadas</h3>
-            <span>O famoso BBB - Bonito, bom e barato!</span>
-            <div className="comidasRecomendadas">
-                {/* map dos produtos aqui */}
+            <div className="homeComidasInfo">
+                <h3>Comidas Recomendadas</h3>
+                <span>O famoso BBB - Bonito, bom e barato!</span>
+            </div>
+            <div className="homeComidasConteudo">
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
+                <ComidasRecomendadas/>
             </div>
         </div>
 
         <div className="homeRestaurantes">
             <h3>Escolha seu restaurante favorito</h3>
-            <div className="restaurantesRecomendados">
-                {/* map dos produtos aqui */}
+            <div className="homeRestaurantesConteudo">
+                <Restaurantes/>
+                <Restaurantes/>
+                <Restaurantes/>
             </div>
         </div>
+        
+        <Footer/>
     </section>
   )
 }

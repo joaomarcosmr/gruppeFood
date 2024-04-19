@@ -22,8 +22,8 @@
 }
 
 .homeSessoesComida{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
     align-content: center;
     margin: 50px auto;
     width: 75%;
@@ -53,6 +53,10 @@
     width: 80%;
 }
 
+.homeComidasConteudo{
+    display: flex;
+}
+
 .comidasRecomendadas{
     margin-top: 25px;
     height: 150px;
@@ -61,7 +65,7 @@
 }
 
 .homeRestaurantes{
-    margin-top: 25px;
+    margin-top: 45px;
     width: 80%;
 }
 
@@ -70,4 +74,9 @@
     height: 150px;
     width: 260px;
     background-color: grey;
+}
+
+.homeRestaurantesConteudo{
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
