@@ -1,8 +1,26 @@
 import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAutenticar } from '../../hooks/Autenticacao/useAutenticar'
 import './Login.css'
 
 const Login = () => {
+  const [ email, setEmail] = useState('')
+  const [ senha, setSenha ] = useState('')
+
+  const { logarConta, error, loading } = useAutenticar()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const dados = {
+      email: email,
+      senha: senha,
+    }
+
+    const usuario = await logarConta(dados)
+  }
+
   return (
     <section className='homeApp loginSection'>
       <div className="credenciaisLogin">
@@ -12,14 +30,14 @@ const Login = () => {
         <span>
             Você está quase matando sua fome...
         </span>
-        <form className='formLogin'>
+        <form className='formLogin' onSubmit={handleSubmit}>
             <span>
                 Coloque seu e-mail:
-                <input type="text" placeholder='Seu e-mail aqui...' />
+                <input type="text" placeholder='Seu e-mail aqui...' onChange={(e) => setEmail(e.target.value)}/>
             </span>
             <span>
                 Sua senha:
-                <input type="password" placeholder='Sua senha...' />
+                <input type="password" placeholder='Sua senha...' onChange={(e) => setSenha(e.target.value)}/>
             </span>
             <button>
                 Entrar

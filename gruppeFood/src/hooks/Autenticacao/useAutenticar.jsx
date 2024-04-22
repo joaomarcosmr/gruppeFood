@@ -15,14 +15,13 @@ export const useAutenticar = () => {
         try {
             const { usuario } = await createUserWithEmailAndPassword(
                 auth,
-                dados.nome,
-                dados.email
+                dados.email,
+                dados.senha
             )
     
             await updateProfile(
                 usuario,
-                { displayName: dados.nome },
-                { userAddress: dados.endereco }
+                { displayName: dados.nome }
             )
     
             setLoading(false)
@@ -32,8 +31,26 @@ export const useAutenticar = () => {
         }
     }
 
+    const logarConta = (dados) => {
+        setLoading(true)
+        setError(null)
+
+        try {
+            const user = signInWithEmailAndPassword(
+                auth,
+                dados.email,
+                dados.senha
+            )
+            
+            setLoading(null)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    
     return {
         auth,
+        logarConta,
         registrarConta,
         error,
         loading
