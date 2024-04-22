@@ -1,3 +1,7 @@
+.homeSection{
+    height: calc(100% - 70px) !important;
+}
+
 .homeSearch{
     margin-left: 15px;
 }

@@ -54,6 +54,21 @@
     padding: 8px;
 }
 
+.btnCadastro{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+    width: 90%;
+    cursor: pointer;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.315);
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 2px grey;
+    padding: 8px;
+}
+
 .esqueciASenha{
     font-size: 14px;
 }

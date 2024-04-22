@@ -1,23 +1,21 @@
 .modalPedido{
-    display: none; /* Hidden by default */
+    display: block;
     position: fixed;
-    z-index: 1; /* Sit on top */
+    top: 71px;
     right: 0;
     width: 450px;
-    height: 100vh; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    height: 100vh;
     background-color: white;
     border-left: 2px solid rgb(5, 185, 59);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.575);
-    overflow-y: hidden;
+    overflow-x: hidden;
+    transition: 1s ease-in-out;
 }
 
 .modal-content-pedido {
     border-radius: 10px;
     background-color: #fefefe;
-    margin: 15% 5px; /* 15% from the top and centered */
-    padding: 30px;
-    width: 85%; /* Could be more or less, depending on screen size */
+    padding: 10px 30px;
+    width: 85%;
     height: 70%;
 }
 
@@ -27,7 +25,6 @@
 
 .close {
     color: #aaa;
-    float: left;
     font-size: 28px;
     font-weight: bold;
 }

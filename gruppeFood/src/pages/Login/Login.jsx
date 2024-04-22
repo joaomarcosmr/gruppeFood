@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Login.css'
 
 const Login = () => {
@@ -24,6 +25,9 @@ const Login = () => {
                 Entrar
             </button>
         </form>
+        <Link to='/register' className='btnCadastro' >
+          Cadastre Aqui
+        </Link>
         <span className='esqueciASenha'>
             Se você esqueceu sua senha <a href=""><b>aperte aqui...</b></a>
         </span>

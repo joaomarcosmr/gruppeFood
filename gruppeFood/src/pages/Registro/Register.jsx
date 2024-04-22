@@ -1,5 +1,6 @@
 import React from 'react'
 import './Register.css'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -30,7 +31,7 @@ const Register = () => {
                 </button>
             </form>
             <span className='esqueciASenha'>
-                Se você já possui conta <a href=""><b>aperte aqui...</b></a>
+                Se você já possui conta <Link to='/login'><b>aperte aqui...</b></Link>
             </span>
           </div>
         </section>
