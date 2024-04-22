@@ -1,17 +1,39 @@
 .finalizarPedidoSection{
     display: grid;
-    grid-template-columns:  auto auto;
-    justify-content: center;
+    grid-template-columns: auto auto;
     margin: 0 auto;
     width: 80%;
-    padding-top: 70px;
+    padding-top: 110px;
     height: calc(100vh - 70px);
 }
 
-.infoPedido{
-    background-color: grey;
-    border: 1px solid black;
-    border-radius: 8px;
-    padding: 20px;
+.infoEntrega{
     width: 60%;
+}
+
+.pagamentoDados{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    border: 1px solid green;
+    height: 80px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.infoPedido{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.329);
+    box-shadow: 0px 0px 5px rgb(173, 173, 173);
+    border-radius: 8px;
+    height: 20%;
+    padding: 20px;
+    width: 80%;
+}
+
+.finalizarPedido{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.301);
 }
