@@ -1,0 +1,17 @@
+.finalizarPedidoSection{
+    display: grid;
+    grid-template-columns:  auto auto;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    padding-top: 70px;
+    height: calc(100vh - 70px);
+}
+
+.infoPedido{
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    width: 60%;
+}

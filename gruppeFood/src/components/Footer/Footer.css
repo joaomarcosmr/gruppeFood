@@ -1,4 +1,14 @@
 .footer{
     margin-top: 40px;
     width: 80%;
+    border-top: 1px solid rgba(0, 0, 0, 0.411);
+}
+
+.footer h4{
+    margin-top: 35px;
+}
+
+.footer p{
+    margin-top: 10px;
+    color: grey;
 }

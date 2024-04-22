@@ -13,3 +13,16 @@
     padding-top: 70px;
     height: calc(100vh - 70px);
 }
+
+.btnVerde{
+    color: white;
+    background-color: rgb(5, 185, 59);
+}
+
+.check{
+    color: white;
+    background-color: rgb(5, 185, 59);
+    font-size: 0.8em;
+    padding: 3px;
+    border-radius: 1000px;
+}

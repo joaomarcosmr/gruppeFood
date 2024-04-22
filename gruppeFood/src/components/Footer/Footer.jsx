@@ -7,9 +7,9 @@ const Footer = () => {
       <h4>
         GruppeFood
       </h4>
-    <p>© Copyright 2021 - iFood - Todos os direitos reservados iFood com Agência de Restaurantes Online S.A.
-
-CNPJ 14.380.200/0001-21 / Avenida dos Autonomistas, nº 1496, Vila Yara, Osasco/SP - CEP 06.020-902</p>
+    <p>© Copyright 2024 - GruppeFood - Todos os direitos reservados GruppeFood S.A.
+    <br/><br/>
+    CNPJ 62.677.525/0001-13 / R. José Pereira Liberato, n° 1475 - Sala 202 - São João, Itajaí - SC, 88304-401</p>
     </section>
   )
 }
