@@ -1,7 +1,26 @@
 import React from 'react';
+import { useEffect } from 'react';
 import './ModalPedido.css';
 
 const ModalPedido = ({ isOpen, closeModal }) => {
+
+  useEffect(() => {
+      const handleOutsideClick = (e) => {
+          if (!e.target.closest('.modal-content-pedido')) {
+              closeModal();
+          }
+      };
+
+      if (isOpen) {
+          document.addEventListener('mousedown', handleOutsideClick);
+      } else {
+          document.removeEventListener('mousedown', handleOutsideClick);
+      }
+
+      return () => {
+          document.removeEventListener('mousedown', handleOutsideClick);
+      };
+  }, [isOpen, closeModal]);
 
     return (
       <>
