@@ -74,8 +74,6 @@ const Home = () => {
                 <Restaurantes/>
             </div>
         </div>
-        
-        <Footer/>
     </section>
   )
 }

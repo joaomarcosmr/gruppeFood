@@ -11,6 +11,33 @@
     width: 60%;
 }
 
+.infoEntrega h3{
+    font-size: 1.8em;
+    margin-bottom: 30px;
+}
+
+.infoEntrega input{
+    padding: 3px 45px;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.infoEntrega input:focus{
+    outline: none;
+}
+
+.infoEntrega p {
+    margin-bottom: 10px;
+}
+
+.infoEntrega hr{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .pagamentoDados{
     display: flex;
     align-items: center;
@@ -21,17 +48,36 @@
     padding: 10px;
 }
 
+.pagamentoDados{
+    margin-bottom: 50px;
+}
+
+.textoPagamento span{
+    font-size: 14px;
+}
+
 .infoPedido{
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.329);
     box-shadow: 0px 0px 5px rgb(173, 173, 173);
     border-radius: 8px;
-    height: 20%;
+    height: 80%;
     padding: 20px;
     width: 80%;
 }
 
+.infoPedidoDetalhes h3{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.infoPedidoDetalhes hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .finalizarPedido{
+    cursor: pointer;
     width: 100%;
     padding: 10px;
     border-radius: 10px;

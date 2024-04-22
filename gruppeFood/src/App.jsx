@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 
 // Components
@@ -21,10 +22,20 @@ import FinalizarPedido from './pages/FinalizarPedido/FinalizarPedido'
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
       <Navbar/>
-      <FinalizarPedido/>
-    </>
+      <Routes>
+        <Route>
+          <Route index path='/' element={<Home/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/perfil' element={<Perfil/>}/>
+          <Route path='/restaurante' element={<RestaurantePage/>}/>
+          <Route path='/checkout' element={<FinalizarPedido/>}/>
+        </Route>
+      </Routes>
+      <Footer/>
+    </BrowserRouter>
   )
 }
 
