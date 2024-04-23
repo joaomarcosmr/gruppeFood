@@ -15,7 +15,7 @@ const RestaurantePage = () => {
             </div>
           </>
         )
-      }
+    }
     
     if (!empresa) {
         return <div>Documento não encontrado.</div>;

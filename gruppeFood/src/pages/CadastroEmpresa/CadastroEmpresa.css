@@ -11,3 +11,12 @@
 .credenciaisRegister{
     margin-top: 20px;
 }
+
+.addProduto{
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    margin-top: 6px;
+    padding: 6px;
+    background-color: rgb(166, 252, 166);
+    border-radius: 8px;
+    cursor: pointer;
+}

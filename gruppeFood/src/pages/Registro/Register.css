@@ -42,6 +42,12 @@
     outline: none;
 }
 
+.formRegister textarea{
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+}
+
 .formRegister button{
     cursor: pointer;
     margin-top: 25px;
