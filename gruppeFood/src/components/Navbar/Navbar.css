@@ -27,6 +27,10 @@
     border-radius: 15px;
 }
 
+.navbarEmpresa{
+    margin-right: 40px;
+}
+
 .navbarCarrinho:hover{
     transition: 1s;
     background-color: rgba(151, 151, 151, 0.158);

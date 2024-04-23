@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useAutenticar } from './hooks/Autenticacao/useAutenticar'
+import { AuthProvider } from './context/AuthContext'
 import './App.css'
 
 // Components
@@ -17,25 +20,48 @@ import Register from './pages/Registro/Register'
 import Perfil from './pages/Perfil/Perfil'
 import RestaurantePage from './pages/RestaurantePage/RestaurantePage'
 import FinalizarPedido from './pages/FinalizarPedido/FinalizarPedido'
+import CadastroEmpresa from './pages/CadastroEmpresa/CadastroEmpresa'
+import GerenciarEmpresa from './pages/GerenciarEmpresa/GerenciarEmpresa'
 
 
 function App() {
+  const [ user, setUser ] = useState(undefined)
+  const { auth } = useAutenticar()
+  const usuarioCarregando = user === undefined
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user)
+    })
+  }, [auth])
+
+  if(usuarioCarregando){
+    return (
+      <>
+        <div className="carregando">
+          <img src="../src/img/logo.svg" alt="logo gruppe food carregando" />
+        </div>
+      </>
+    )
+  }
 
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route>
+    <AuthProvider value={{user}}>
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
           <Route index path='/' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/perfil' element={<Perfil/>}/>
-          <Route path='/restaurante' element={<RestaurantePage/>}/>
-          <Route path='/checkout' element={<FinalizarPedido/>}/>
-        </Route>
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
+          <Route path='/login' element={user ? <Perfil/> : <Login/>}/>
+          <Route path='/register' element={user ? <Home/> : <Register/>}/>
+          <Route path='/cadastro-empresa' element={user ? <CadastroEmpresa/> : <Login/>}/>
+          <Route path='/gerenciar-empresa' element={user ? <GerenciarEmpresa/> : <Login/>}/>
+          <Route path='/perfil' element={!user ? <Login/> : <Register/>}/>
+          <Route path='/restaurante/:id' element={<RestaurantePage/>}/>
+          <Route path='/checkout' element={!user ? <Login/> : <FinalizarPedido/>}/>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 

@@ -8,19 +8,27 @@ const Register = () => {
     const [ email, setEmail] = useState('')
     const [ endereco, setEndereco] = useState('')
     const [ senha, setSenha ] = useState('')
+    const [ mensagem, setMensagem ] = useState('')
+    const [ foto, setFoto ] = useState(null)
     const { registrarConta, error, loading } = useAutenticar()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setMensagem('')
         
         const dados = {
             nome: nome,
             email: email,
             endereco: endereco,
             senha: senha,
+            foto: foto
         }
 
-        await registrarConta(dados)
+        const usuario = await registrarConta(dados)
+
+        if(usuario){
+            setMensagem('Conta registrada com sucesso!')
+        }
     }
 
   return (
@@ -50,9 +58,20 @@ const Register = () => {
                         Cadastrar
                     </button>
                 </form>
-                <span className='esqueciASenha'>
+                {loading && (
+                    <span className='esqueciASenha'>
+                        Carregando...
+                    </span>
+                )}
+                {mensagem.length > 0 ? (
+                    <span className='sucesso'>
+                        {mensagem} <br/> ir para login <Link to='/login'><b>aperte aqui...</b></Link>
+                    </span>
+                ) : (
+                    <span className='esqueciASenha'>
                     Se você já possui conta <Link to='/login'><b>aperte aqui...</b></Link>
-                </span>
+                    </span>
+                )}
             </div>
         </section>
     )

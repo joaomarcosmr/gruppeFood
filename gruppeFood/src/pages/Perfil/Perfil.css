@@ -3,7 +3,7 @@
     justify-content: space-evenly;
     align-items: center;
     width: 60%;
-    height: 200px;
+    height: 100px;
 }
 
 .perfilUsuario img{
@@ -50,6 +50,7 @@
 }
 
 .perfilBotoes button{
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.295);
     border-radius: 8px;
     cursor: pointer;
@@ -57,3 +58,7 @@
     margin-top: 15px;
 }
 
+.btnSair{
+    color: white;
+    background-color: rgb(207, 69, 69);
+}

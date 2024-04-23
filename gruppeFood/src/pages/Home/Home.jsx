@@ -15,35 +15,35 @@ const Home = () => {
         <div className="homeSessoesComida">
             <div className="cardComida">
                 <div className="sessaoComida" id="hamburguer">
-                    
+                    <img src="../../src/img/hamburguer.png" alt="" />
                 </div>
-                <span>Restaurantes</span>
+                <span>Lanches</span>
             </div>
 
             <div className="cardComida">
                 <div className="sessaoComida" id="pizza">
-                    
+                    <img src="../../src/img/pizza.png" alt="" />
                 </div>
                 <span>Pizza</span>
             </div>
 
             <div className="cardComida">
                 <div className="sessaoComida" id="japones">
-                    
+                    <img src="../../src/img/sushi.png" alt="" />
                 </div>
                 <span>Japones</span>
             </div>
 
             <div className="cardComida">
                 <div className="sessaoComida" id="salgadinho">
-                    
+                    <img src="../../src/img/coxinha.png" alt="" />
                 </div>
                 <span>Salgadinho</span>
             </div>
 
             <div className="cardComida">
                 <div className="sessaoComida" id="chines">
-                    
+                    <img src="../../src/img/chines.png" alt="" />
                 </div>
                 <span>Chines</span>
             </div>

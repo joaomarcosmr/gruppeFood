@@ -26,3 +26,15 @@
     padding: 3px;
     border-radius: 1000px;
 }
+
+.carregando{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.carregando img{
+    filter: opacity(30%);
+    width: 200px;
+}

@@ -57,3 +57,9 @@
 .esqueciASenha{
     font-size: 14px;
 }
+
+.sucesso{
+    text-align: center;
+    margin-top: 10px !important;
+    color: green;
+}

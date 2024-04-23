@@ -7,11 +7,13 @@ import './Login.css'
 const Login = () => {
   const [ email, setEmail] = useState('')
   const [ senha, setSenha ] = useState('')
+  const [ mensagem, setMensagem ] = useState('')
 
   const { logarConta, error, loading } = useAutenticar()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setMensagem('')
 
     const dados = {
       email: email,
@@ -46,9 +48,21 @@ const Login = () => {
         <Link to='/register' className='btnCadastro' >
           Cadastre Aqui
         </Link>
-        <span className='esqueciASenha'>
-            Se você esqueceu sua senha <a href=""><b>aperte aqui...</b></a>
-        </span>
+        {loading && (
+                    <span className='esqueciASenha'>
+                        Carregando...
+                    </span>
+                )}
+                {mensagem.length > 0 ? (
+                    <span className='sucesso'>
+                         <br/> Sucesso, redirecionando...
+                    </span>
+                ) : (
+                  <span className='esqueciASenha'>
+                    Se você esqueceu sua senha <Link to='/recuperacaoSenha'><b>aperte aqui...</b></Link>
+                  </span>
+          )}
+
       </div>
     </section>
   )
