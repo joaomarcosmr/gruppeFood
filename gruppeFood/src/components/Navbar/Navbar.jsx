@@ -15,7 +15,7 @@ const Navbar = () => {
     <section className='navbar'>
         <div className="navbarImage">
             <Link to='/'>
-                <img src="../src/img/logo.png" alt="logo gruppe food" />
+                <img src="../src/img/logo.svg" alt="logo gruppe food" />
             </Link>
         </div>    
         <div className="navbarSessaoUsuario">
