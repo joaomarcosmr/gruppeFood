@@ -1,6 +1,7 @@
 .loginSection{
     justify-content: center;
     background-color: rgb(125, 235, 125);
+    margin-bottom: -100px;
 }
 
 .credenciaisLogin{

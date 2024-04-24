@@ -1,6 +1,8 @@
 .registerSection{
     justify-content: center;
     background-color: rgb(125, 235, 125);
+    padding-bottom: 100px;
+    margin-bottom: -100px;
 }
 
 .credenciaisRegister{

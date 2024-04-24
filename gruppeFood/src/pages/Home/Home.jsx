@@ -56,7 +56,6 @@ const Home = () => {
             </div>
             <div className="homeComidasConteudo">
                 <ComidasRecomendadas/>
-                <ComidasRecomendadas/>
             </div>
         </div>
 
