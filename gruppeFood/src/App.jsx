@@ -21,6 +21,7 @@ import Perfil from './pages/Perfil/Perfil'
 import RestaurantePage from './pages/RestaurantePage/RestaurantePage'
 import FinalizarPedido from './pages/FinalizarPedido/FinalizarPedido'
 import CadastroEmpresa from './pages/CadastroEmpresa/CadastroEmpresa'
+import GerenciarEmpresa from './pages/GerenciarEmpresa/GerenciarEmpresa'
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
           <Route path='/login' element={user ? <Perfil/> : <Login/>}/>
           <Route path='/register' element={user ? <Home/> : <Register/>}/>
           <Route path='/cadastro-empresa' element={user ? <CadastroEmpresa/> : <Login/>}/>
+          <Route path='/gerenciar-empresa' element={user ? <GerenciarEmpresa/> : <Login/>}/>
           <Route path='/perfil' element={!user ? <Login/> : <Register/>}/>
           <Route path='/restaurante/:id' element={<RestaurantePage/>}/>
           <Route path='/checkout' element={!user ? <Login/> : <FinalizarPedido/>}/>

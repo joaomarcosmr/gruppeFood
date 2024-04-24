@@ -20,3 +20,17 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+.w50{
+    width: 148px !important;
+}
+
+.abrirRestaurante{
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    width: 95%;
+    border: 1px solid rgba(128, 128, 128, 0.438);
+    padding: 6px;
+    border-radius: 6px;
+}

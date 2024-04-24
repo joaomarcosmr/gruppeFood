@@ -1,0 +1,263 @@
+.gerenciarEmpresa{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.empresasCadastradas{
+    width: 35%;
+    height: 100%;
+}
+
+.empresasCadastradas h3{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+}
+
+.produtosEmpresaSelecionada{
+    width: 65%;
+    height: 100%;
+}
+
+.produtosEmpresaSelecionada h3{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.empresaCadastrada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.empresa{
+    border: 1px solid rgba(128, 128, 128, 0.445);
+    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.274);
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.empresa:hover{
+    border: 1px solid rgba(27, 199, 70, 0.445);
+    box-shadow: 0px 0px 3px rgba(27, 199, 70, 0.445);
+    transition: 0.3s ease;
+}
+
+.active{
+    border: 2px solid rgba(27, 199, 70, 0.589);
+    box-shadow: 0px 0px 3px rgba(27, 199, 70, 0.445);
+    transition: ease;
+}
+
+.active:hover{
+    border: 2px solid rgba(27, 199, 70, 0.589);
+    box-shadow: 0px 0px 3px rgba(27, 199, 70, 0.445);
+    transition: ease;
+}
+
+.empresa img{
+    border: 1px solid rgba(0, 0, 0, 0.418);
+    border-radius: 8px;
+    width: 25%;
+    height: 100%;
+    margin-right: 25px;
+}
+
+.produtosEmpresa{
+    border: 1px solid green;
+    border-radius: 8px;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeIcon{
+    color: black;
+    font-size: 18px;
+}
+
+.removeIcon:hover{
+    color: rgba(255, 0, 0, 0.603);
+    font-size: 20px;
+}
+
+.titulos{
+    display: flex;
+}
+
+.titulos h3{
+    cursor: pointer;
+    margin-right: 50px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+}
+.titulos h3:hover{
+    border-bottom: 1px solid rgba(32, 219, 63, 0.699);
+}
+
+.disable{
+    display: none;
+}
+
+.editarProdutosFormRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.editarProdutosFormRegister h1{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.editarProdutosFormRegister button{
+    margin-bottom: 30px
+}
+
+.editarNegocios{
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.editarNegocios h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.editarNegocios p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formRegisterGerenciarEmpresa{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.formRegisterGerenciarEmpresa input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid rgb(136, 136, 136);
+    padding: 6px 10px 6px 10px;
+    width: 500px;
+}
+
+.formRegisterGerenciarEmpresa input:focus{
+    outline: none;
+}
+
+.formRegisterGerenciarEmpresa textarea{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.formRegisterGerenciarEmpresa select{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 95%;
+}
+
+.formRegisterGerenciarEmpresa button{
+    cursor: pointer;
+    margin-top: 25px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(5, 185, 59);
+    box-shadow: 0px 0px 2px grey;
+    padding: 8px;
+    margin-bottom: 25px;
+}
+
+.editarProdutos{
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.produtoCadastradoGerenciarEmpresa{
+    width: 100%;
+    height: 100%;
+    border: 10px solid red;
+}
+
+.produtosRestauranteGerenciarEmpresa{
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
+.produtoCadastradoGerenciarEmpresa{
+    cursor: pointer;
+    display: flex;
+    width: 300px;
+    height: 150px;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    border-radius: 5px;
+    overflow-x: hidden;
+}
+
+.produtoCadastradoGerenciarEmpresa:hover{
+    border: 2px solid rgba(0, 0, 0, 0.199);
+}
+
+.produtoCadastrado span{
+    width: 85%;
+    color: grey;
+    font-size: 15px;
+}
+
+.produtoCadastradoInfoGerenciarEmpresa{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.produtoCadastradoInfoGerenciarEmpresa h3{
+    font-size: 1.1em;
+}
+
+.produtoCadastradoInfoGerenciarEmpresa span{
+    font-size: 0.8em;
+}
+
+.produtoCadastradoImgGerenciarEmpresa img{
+    float: right;
+    width: 80%;
+    height: 100%;
+}

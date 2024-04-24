@@ -25,6 +25,10 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
                 q = await query(collectionRef, 
                     orderBy('createdAt', 'desc'))
 
+                if (uid) {
+                    q = query(q, where('uid', '==', uid));
+                }
+
                 await onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({

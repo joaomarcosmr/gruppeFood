@@ -6,6 +6,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .homeApp{
     display: flex;
     align-items: center;
@@ -37,4 +41,25 @@
 .carregando img{
     filter: opacity(30%);
     width: 200px;
+}
+
+::-webkit-scrollbar {
+    width: 8px; /* largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* cor do fundo da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(5, 185, 59); /* cor do controle de rolagem */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 185, 59); /* cor do controle de rolagem quando o cursor está sobre ele */
+}
+
+.text-center{
+    margin-top: 10px;
+    text-align: center;
 }
