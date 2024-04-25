@@ -14,8 +14,6 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
     for(let i = 0; i < pedidoUsuario.length; i++){
       setValorTotalCarrinho(valorTotalCarrinho + (pedidoUsuario[i].precoCarrinho * pedidoUsuario[i].numItensCarrinho))
     }
-
-    setRestauranteCarrinho(pedidoUsuario.restaurante)
   }, [pedidoUsuario])
 
   useEffect(() => {

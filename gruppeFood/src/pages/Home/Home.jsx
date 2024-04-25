@@ -67,7 +67,10 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
                 <span>O famoso BBB - Bonito, bom e barato!</span>
             </div>
             <div className="homeComidasConteudo">
-                <ComidasRecomendadas abrirModal={abrirModal} setProdutoSelecionado={setProdutoSelecionado}/>
+                <ComidasRecomendadas 
+                    abrirModal={abrirModal} 
+                    setProdutoSelecionado={setProdutoSelecionado}
+                />
             </div>
         </div>
 

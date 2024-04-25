@@ -27,7 +27,7 @@ const ComidasRecomendadas = ({ abrirModal, setProdutoSelecionado }) => {
         <div key={index}>
           <div className='comidas' onClick={() => handleClick(produto)}>
             <div className="comidasImg">
-              <img src={produto.fotoProduto} alt="gokei itajai" />
+              <img src={produto.fotoProduto} alt={produto.nomeProduto} />
             </div>
             <div className="comidasInfos">
               <p>{produto.nomeProduto}</p>
