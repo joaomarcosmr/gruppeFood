@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useState } from 'react'
 import './Navbar.css'
 import ModalPedido from '../ModalPedido/ModalPedido'
 
-const Navbar = () => {
+const Navbar = ({ pedidoUsuario }) => {
     const [openModal, setOpenModal] = useState(false)
+    const [valorCarrinho, setValorCarrinho] = useState(0)
+    const [numItensCarrinho, setNumItensCarrinho] = useState(0)
+
+    useEffect(() => {
+        for(let i = 0; i < pedidoUsuario.length; i++){
+            parseFloat(setValorCarrinho((valorCarrinho + pedidoUsuario[i].valorCarrinho)))
+            setNumItensCarrinho(numItensCarrinho + parseInt(pedidoUsuario[i].numItensCarrinho))
+        }
+    }, [pedidoUsuario])
 
     const closeModal = () => {
         setOpenModal(false);
@@ -36,14 +44,15 @@ const Navbar = () => {
                     </div>
                     <div className="navbarCarrinho" onClick={() => setOpenModal(true)}>
                         <svg className='iconeNav' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
+                        <div className="navBarInfoCliente">
+                            <span>R$ {parseFloat(valorCarrinho).toFixed(2)}</span>
+                            <span>{numItensCarrinho} itens</span>
+                        </div>
                         <ModalPedido
                             isOpen={openModal}
-                            closeModal={() => setOpenModal(closeModal)} // Correção aqui
+                            closeModal={() => setOpenModal(closeModal)}
+                            pedidoUsuario={pedidoUsuario}
                         />
-                        <div className="navBarInfoCliente">
-                            <span>R$ {}</span>
-                            <span>{} itens</span>
-                        </div>
                     </div>  
                 </div>
             </section>

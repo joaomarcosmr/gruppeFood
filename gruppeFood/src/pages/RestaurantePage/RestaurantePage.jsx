@@ -1,11 +1,23 @@
-import React from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos'
 import './RestaurantePage.css'
+import ModalAddCarrinho from '../../components/ModalAddCarrinho/ModalAddCarrinho'
 
-const RestaurantePage = () => {
+const RestaurantePage = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPrecoCarrinho, setRestaurante}) => {
     const { id } = useParams()
     const { document: empresa, loading, error } = useCarregaDocumentos('empresa', id)
+
+    const [openModal, setOpenModal] = useState(false);
+    const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+
+    const abrirModal = () => {
+        setOpenModal(true);
+    };
+
+    const fecharModal = () => {
+        setOpenModal(false);
+    };
     
     if(loading){
         return (
@@ -19,6 +31,11 @@ const RestaurantePage = () => {
     
     if (!empresa) {
         return <div>Documento não encontrado.</div>;
+    }
+
+    const handleClick = (produto) => {
+      abrirModal()
+      setProdutoSelecionado(produto)
     }
 
 
@@ -44,7 +61,7 @@ const RestaurantePage = () => {
             <h3>Produtos</h3>
             <div className="sessaoProdutos">
             {empresa.produtos && empresa.produtos.map((produto, index) => (
-                <div className="produtoCadastrado" key={index}>
+                <div className="produtoCadastrado" key={index} onClick={() => handleClick(produto)}>
                     <div className="produtoCadastradoInfo">
                         <h3>{produto.nomeProduto}</h3>
                         <span>{produto.descricao}</span>
@@ -56,6 +73,16 @@ const RestaurantePage = () => {
                 </div>
             ))}
             </div>
+            <ModalAddCarrinho
+                isOpen={openModal}
+                closeModal={fecharModal}
+                produto={produtoSelecionado}
+                setValorCarrinho={setValorCarrinho}
+                setNumItensCarrinho={setNumItensCarrinho}
+                setProdutoPedido={setProdutoPedido}
+                setPrecoCarrinho={setPrecoCarrinho}
+                setRestaurante={setRestaurante}
+            />
         </div>
       </div>
     </section>

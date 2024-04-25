@@ -170,10 +170,9 @@ const GerenciarEmpresa = () => {
             <div className={`editarProdutos ${opcao === 'editarProdutos' ? '' : 'disable'}`}>
                 <div className="produtosRestauranteGerenciarEmpresa">
                     {restaurante.produtos && restaurante.produtos.map((produto, index) => (
-                    <>
+                    <div key={index} >
                         <div 
                             className="produtoCadastradoGerenciarEmpresa" 
-                            key={index} 
                             onClick={() => {
                                 setOpenModal(true)
                                 setProdutoModal(produto)
@@ -186,7 +185,7 @@ const GerenciarEmpresa = () => {
                                 <img src={produto.fotoProduto} alt="foto Nome Produto" />
                             </div>
                         </div>
-                    </>
+                    </div>
                     ))}
                     <ModalEditarProduto
                         isOpen={openModal}

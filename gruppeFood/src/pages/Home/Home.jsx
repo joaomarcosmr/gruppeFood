@@ -4,8 +4,20 @@ import './Home.css'
 
 import Restaurantes from '../../components/Restaurantes/Restaurantes'
 import ComidasRecomendadas from '../../components/ComidasRecomendadas/ComidasRecomendadas'
+import ModalAddCarrinho from '../../components/ModalAddCarrinho/ModalAddCarrinho'
 
-const Home = () => {
+const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPrecoCarrinho, setRestaurante}) => {
+    const [openModal, setOpenModal] = useState(false);
+    const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+
+    const abrirModal = () => {
+        setOpenModal(true);
+    };
+
+    const fecharModal = () => {
+        setOpenModal(false);
+    };
+  
   return (
     <section className='homeApp homeSection'>
         <div className="homeSearch">
@@ -55,10 +67,23 @@ const Home = () => {
                 <span>O famoso BBB - Bonito, bom e barato!</span>
             </div>
             <div className="homeComidasConteudo">
-                <ComidasRecomendadas/>
+                <ComidasRecomendadas abrirModal={abrirModal} setProdutoSelecionado={setProdutoSelecionado}/>
             </div>
         </div>
 
+        {openModal && produtoSelecionado && (
+                <ModalAddCarrinho
+                    isOpen={openModal}
+                    closeModal={fecharModal}
+                    produto={produtoSelecionado}
+                    setValorCarrinho={setValorCarrinho}
+                    setNumItensCarrinho={setNumItensCarrinho}
+                    setProdutoPedido={setProdutoPedido}
+                    setPrecoCarrinho={setPrecoCarrinho}
+                    setRestaurante={setRestaurante}
+                />
+            )
+        }
         <div className="homeRestaurantes">
             <h3>Escolha seu restaurante favorito</h3>
             <div className="homeRestaurantesConteudo">

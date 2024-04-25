@@ -91,6 +91,7 @@ const CadastroEmpresa = () => {
             const urlProduto = await getDownloadURL(storageRef);
 
             setProduto([...produto, {
+                restaurante: nomeRestaurante,
                 nomeProduto: nomeProduto,
                 descricao: descricaoProduto,
                 fotoProduto: urlProduto,

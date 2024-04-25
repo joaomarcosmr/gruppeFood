@@ -1,15 +1,11 @@
-import { useState, seEffect, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 import './ComidasRecomendadas.css'
 
-const ComidasRecomendadas = () => {
+const ComidasRecomendadas = ({ abrirModal, setProdutoSelecionado }) => {
   const [produtos, setProdutos] = useState([])
 
   const { documents: restaurantes, loading, error } = useCarregaColecoes('empresa')
-
-  const handleProduto = () => {
-    console.log('clicou')
-  }
 
   useEffect(() => {
     if (restaurantes) {
@@ -19,23 +15,28 @@ const ComidasRecomendadas = () => {
       }
     }
   }, [restaurantes]);
-  
 
-  console.log(produtos)
+  const handleClick = (produto) => {
+    abrirModal()
+    setProdutoSelecionado(produto);
+  };
+  
   return (
     <>
       {produtos && produtos.map((produto, index) => (
-        <div className='comidas' key={index} onClick={handleProduto}>
-          <div className="comidasImg">
-            <img src={produto.fotoProduto} alt="gokei itajai" />
-          </div>
-          <div className="comidasInfos">
-            <p>{produto.nomeProduto}</p>
-            <span>R$ {produto.precoProduto}</span>
-            <p className='tempoEntrega'>50-60 min / R$ 5,00</p>
+        <div key={index}>
+          <div className='comidas' onClick={() => handleClick(produto)}>
+            <div className="comidasImg">
+              <img src={produto.fotoProduto} alt="gokei itajai" />
+            </div>
+            <div className="comidasInfos">
+              <p>{produto.nomeProduto}</p>
+              <span>R$ {produto.precoProduto}</span>
+              <p className='tempoEntrega'>50-60 min / R$ 5,00</p>
+            </div>
           </div>
         </div>
-      ))}
+      ))}       
     </>
   )
   

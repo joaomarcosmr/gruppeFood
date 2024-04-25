@@ -7,6 +7,16 @@
     height: calc(100vh - 70px);
 }
 
+.entregaDados .subtotal{
+    color: grey;
+}
+
+.entregaDados .total{
+    color: green;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
 .infoEntrega{
     width: 60%;
 }
@@ -17,7 +27,7 @@
 }
 
 .infoEntrega input{
-    padding: 3px 45px;
+    padding: 3px 25px;
     font-size: 1.1em;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.315);
@@ -34,7 +44,7 @@
 }
 
 .infoEntrega hr{
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
 }
 
@@ -50,6 +60,10 @@
 
 .pagamentoDados{
     margin-bottom: 50px;
+}
+
+.pagamentoDados img{
+    margin-right: 10px;
 }
 
 .textoPagamento span{
@@ -68,7 +82,7 @@
 
 .infoPedidoDetalhes h3{
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .infoPedidoDetalhes hr{
@@ -82,4 +96,30 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+.tabelaFinalizarPedido{
+    max-height: 310px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(5, 185, 59) transparent;
+    width: 100%;
+}
+
+.tabelaFinalizarPedido table{
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    padding-right: 10px;
+}
+
+.entregaDadosCampoTexto{
+    position: relative;
+}
+
+.entregaDadosCampoTexto .iconeInput{
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 14px;
 }

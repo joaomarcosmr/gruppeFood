@@ -1,4 +1,5 @@
 .modalPedido{
+    cursor: auto;
     display: block;
     position: fixed;
     top: 71px;
@@ -8,10 +9,25 @@
     background-color: white;
     border-left: 2px solid rgb(5, 185, 59);
     overflow-x: hidden;
+}
+
+.modalPedido-null{
+    cursor: auto;
+    display: block;
+    position: fixed;
+    top: 71px;
+    right: 0;
+    width: 450px;
+    height: 20vh;
+    background-color: white;
+    border-left: 2px solid red;
+    border-bottom: 2px solid red;
+    overflow-x: hidden;
     transition: 1s ease-in-out;
 }
 
-.modal-content-pedido {
+.modal-content-pedido,
+.modal-content-null {
     border-radius: 10px;
     background-color: #fefefe;
     padding: 10px 30px;
@@ -40,6 +56,10 @@
     margin-top: 30px;
 }
 
+.detalhesPedido-null{
+    margin-top: 30px;
+}
+
 .detalhesPedido p{
     margin-top: 30px;
 }
@@ -56,17 +76,25 @@
 }
 
 .tabelaProdutos{
-    max-height: 300px;
+    max-height: 320px;
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: rgb(5, 185, 59) transparent;
+    width: 100%;
+}
+
+.tabelaProdutos table{
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    padding-right: 10px;
 }
 
 .infoTotalPedido{
     position: absolute;
     background-color: white;
     padding: 20px 5px;
-    top: 270px;
+    top: 340px;
     width: 95%;
 }
 
@@ -87,4 +115,8 @@
 
 .tabelaProdutos tbody tr td{
     padding: 15px 0px;
+}
+
+.colorVerde{
+    color: green;
 }

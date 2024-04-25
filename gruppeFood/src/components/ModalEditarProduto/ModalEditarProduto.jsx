@@ -24,7 +24,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto }) => {
     return (
         <div className='ModalEditarProdutoPedidos'>
             <div className="modal-content-produto">
-                <span className='close'> &times;</span>
+                <span className='close' onClick={closeModal}> &times;</span>
                 <h4>{produto.nomeProduto}</h4>
                 <div className="produtoInfoEditar">
                     <div className="produtoImgEditar">

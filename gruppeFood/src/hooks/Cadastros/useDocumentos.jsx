@@ -1,7 +1,6 @@
 import { useState, useReducer } from "react"
-import { db, storage } from '../../Firebase/firebase'
+import { db } from '../../Firebase/firebase'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
-import { uploadBytes } from "firebase/storage"
 
 const initialState = {
     loading: null,
@@ -50,6 +49,7 @@ export const useCreateProduct = (docCollection) => {
                 type: 'INSERTED_DOCUMENT',
                 payload: insertedDocument
             })
+            return insertedDocument;
         } catch (error) {
             checkCancelledBeforeDispatch({
                 type: 'ERROR',

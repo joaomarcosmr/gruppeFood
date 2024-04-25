@@ -1,0 +1,67 @@
+.pedidoFinalizado{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+}
+
+.pedidoRealizado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.pedidoRealizado h3{
+    margin-bottom: 20px;
+}
+
+.pedidoRealizado span{
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    width: 300px;
+    height: 10px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-progress {
+    width: 100px;
+    height: 100%;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: progress 5s linear infinite;
+}
+
+@keyframes progress {
+    0% { left: 0; }
+    50% { left: 50%; }
+    100% { left: 100%; }
+}
+
+.confirmation-text {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.resultado{
+    display: flex;
+    flex-direction: column;
+}
+
+.resultado button{
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px;
+}
