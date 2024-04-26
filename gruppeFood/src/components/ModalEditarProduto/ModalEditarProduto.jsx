@@ -8,36 +8,65 @@ import './ModalEditarProduto.css'
 const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
     const { updateDocument, response } = useUpdateDocument('empresa')
     const { user } = useAuthValue()
-    
-    const [produtoSelecionado, setProdutoSelecionado] = useState([])
-    const [restauranteSelecionado, setRestauranteSelecionado] = useState(restaurante)
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const [nomeProduto, setNomeProduto] = useState('')
     const [fotoProduto, setFotoProduto] = useState(null)
     const [descricaoProduto, setDescricaoProduto] = useState('')
-    const [precoProduto, setPrecoProduto] = useState(0)
+    const [precoProduto, setPrecoProduto] = useState('')
+
+    const [ mensagem, setMensagem ] = useState('')
+
+    useEffect(() => {
+        if (produto) {
+            setNomeProduto(produto.nomeProduto);
+            setDescricaoProduto(produto.descricao)
+            setFotoProduto(produto.fotoProduto)
+            setPrecoProduto(produto.precoProduto)
+            setLoading(false)
+        }
+    }, [produto]); 
 
     const handleUpdate = async(e) => {
         e.preventDefault()
         setLoading(true)
-        const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
+        setMensagem('')
+
+        try {
+            if(fotoProduto != produto.fotoProduto){
+                const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
         
-        await uploadBytes(storageRef, fotoProduto);
-        const urlProduto = await getDownloadURL(storageRef);
+                await uploadBytes(storageRef, fotoProduto);
+                const urlProduto = await getDownloadURL(storageRef);
+                
+                setFotoProduto(urlProduto)
+            }
+    
+            const produtoAtualizado = {
+                restaurante: restaurante.nomeRestaurante,
+                nomeProduto: nomeProduto,
+                descricao: descricaoProduto,
+                fotoProduto: fotoProduto,
+                precoProduto: precoProduto,
+                createdBy: user.displayName
+            };
+    
+            for(let i = 0; i < restaurante.produtos.length; i++){
+                if (restaurante.produtos[i].nomeProduto == produto.nomeProduto){
+                    restaurante.produtos[i] = produtoAtualizado
+                }
+                break;
+            }
+    
+            await updateDocument(restaurante.id, restaurante)
 
+            setMensagem('Produto atualizado!')
+            setLoading(false)
+        } catch (error) {
+            console.error(error)
+        }
 
-        const produtoAtualizado = {
-            restaurante: restaurante.nomeRestaurante,
-            nomeProduto: nomeProduto,
-            descricao: descricaoProduto,
-            fotoProduto: urlProduto,
-            precoProduto: precoProduto,
-            createdBy: user.displayName
-        };
-
-        // PAREI AQUI NA LOGICA DE ATUALIZAR TODO O PRODUTO
 
         setLoading(false)
     }
@@ -61,6 +90,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
         };
     }, [isOpen, closeModal]);
 
+
   if(isOpen){
     return (
         <div className='ModalEditarProdutoPedidos'>
@@ -75,7 +105,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
                         <form onSubmit={handleUpdate}>
                             <span>
                                 Nome Produto:
-                                <input type="text" defaultValue={produto.nomeProduto} onChange={(e) => setNomeProduto(e.target.value)}/>
+                                <input type="text" defaultValue={nomeProduto} required onChange={(e) => setNomeProduto(e.target.value)}/>
                             </span>
                             <span>
                                 Foto Produto:
@@ -83,12 +113,15 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
                             </span>
                             <span>
                                 Descricao Produto:
-                                <textarea rows="6" defaultValue={produto.descricao} onChange={(e) => setDescricaoProduto(e.target.value)}/>
+                                <textarea rows="6" defaultValue={descricaoProduto} required onChange={(e) => setDescricaoProduto(e.target.value)}/>
                             </span>
                             <span>
                                 Preço Produto:
-                                <input type="number" defaultValue={`R$ ${parseFloat(produto.precoProduto)}`} onChange={(e) => setPrecoProduto(e.target.value)}/>
+                                <input type="number" defaultValue={`${parseInt(produto.precoProduto)}`} required onChange={(e) => setPrecoProduto(e.target.value)}/>
                             </span>
+                            {mensagem &&(
+                                <p className='sucessoAtualizado'>{mensagem}</p>
+                            )}
                             {!loading ? (
                                 <button className='btnVerde'>
                                     Atualizar Produto

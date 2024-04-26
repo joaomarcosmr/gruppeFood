@@ -120,7 +120,7 @@ const GerenciarEmpresa = () => {
                         <span>
                             {restaurante.nomeRestaurante}
                         </span>
-                        <form className='formRegisterGerenciarEmpresa'> 
+                        <form className='formRegisterGerenciarEmpresa' onSubmit={handleCadastroProduto}> 
                             <span>
                                 Nome do produto:
                                 <input type="text" placeholder='Nome do seu produto...' onChange={(e) => setNomeProduto(e.target.value)} required/>
@@ -138,7 +138,7 @@ const GerenciarEmpresa = () => {
                                 <input type="number" placeholder='5,00' value={precoProduto} onChange={(e) => setPrecoProduto(e.target.value)} />
                             </span>
                             {!loading ? (
-                                <button onClick={handleCadastroProduto}>
+                                <button>
                                     Adicionar Produto
                                 </button>
                             ) : (
