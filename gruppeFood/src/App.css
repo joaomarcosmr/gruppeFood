@@ -23,6 +23,12 @@ a{
     background-color: rgb(5, 185, 59);
 }
 
+.btnVermelho{
+    color: white;
+    margin-top: 10px;
+    background-color: red;
+}
+
 .check{
     color: white;
     background-color: rgb(5, 185, 59);
@@ -62,4 +68,8 @@ a{
 .text-center{
     margin-top: 10px;
     text-align: center;
+}
+
+.iconeLoading{
+    font-size: 50px;
 }

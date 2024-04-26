@@ -38,7 +38,7 @@ const PedidoFinalizado = () => {
     return (
         <section className='homeApp pedidoFinalizado'>
             <div className="pedidoRealizado">
-                <h3>Seu pedido no <span style={{color: 'green'}}>{pedidoAtual && pedidoAtual.restaurante}</span> foi realizado!</h3>
+                <h3>Seu pedido foi realizado!</h3>
 
                 {statusPedido != 'Seu pedido foi entregue!' ? (
                     <>
@@ -56,7 +56,6 @@ const PedidoFinalizado = () => {
                             isOpen={openModal}
                             closeModal={() => setOpenModal(closeModal)}
                             uidUsuario={uid}
-                            idPedidoAtual={id}
                         />
                     </div>
                 )}

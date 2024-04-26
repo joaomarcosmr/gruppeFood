@@ -4,10 +4,21 @@ import { useAuthValue } from '../../context/AuthContext'
 import { db, auth } from '../../Firebase/firebase'
 import { Link } from 'react-router-dom'
 import { signOut } from "firebase/auth";
+import ModalHistorico from '../../components/ModalHistorico/ModalHistorico'
 
 const Perfil = () => {
   const [ loading, setLoading ] = useState(false)
   const { user } = useAuthValue()
+
+  const [openModal, setOpenModal] = useState(false)
+
+  const abrirModal = () => {
+      setOpenModal(true);
+    };
+
+  const closeModal = () => {
+      setOpenModal(false);
+    };
 
   const handleSignOut = async(e) => {
     setLoading(true)
@@ -42,7 +53,12 @@ const Perfil = () => {
         </div>
       </div>
       <div className="perfilBotoes">
-        <button className='btnVerde'>Histórico de pedidos</button>
+        <button className='btnVerde' onClick={abrirModal}>Histórico de pedidos</button>
+        <ModalHistorico 
+          isOpen={openModal}
+          closeModal={() => setOpenModal(closeModal)}
+          uidUsuario={user.uid}
+        />
         <Link to='/'>
           <button className='btn'>Voltar pro Início</button>
         </Link>

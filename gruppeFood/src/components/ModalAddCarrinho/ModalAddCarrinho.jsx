@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react'
 import './ModalAddCarrinho.css'
+import { useNavigate } from 'react-router-dom'
+import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 
 const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPrecoCarrinho, setRestaurante}) => {
     const [ numeroProdutos, setNumeroProdutos ] = useState(1)
+    const [ restauranteSelecionado, setRestauranteSelecionado ] = useState('')
+    const { documents: restaurantes, loading, error } = useCarregaColecoes('empresa')
+    const navigate = useNavigate()
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
@@ -23,14 +28,14 @@ const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNu
     }, [isOpen, closeModal]);
 
     const handleCarrinho = () => {
-        setRestaurante(produto.restaurante)
-        setProdutoPedido(produto.nomeProduto)
-        setValorCarrinho(parseInt(produto.precoProduto * numeroProdutos))
-        setNumItensCarrinho(numeroProdutos)
-        setPrecoCarrinho(parseFloat(produto.precoProduto))
+        setRestaurante(produto.restaurante);
+        setProdutoPedido(produto.nomeProduto);
+        setValorCarrinho(parseInt(produto.precoProduto * numeroProdutos));
+        setNumItensCarrinho(numeroProdutos);
+        setPrecoCarrinho(parseFloat(produto.precoProduto));
         closeModal();
     }
-
+      
     if (!isOpen || !produto) return null;
 
     return (

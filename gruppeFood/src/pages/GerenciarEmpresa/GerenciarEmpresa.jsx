@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './GerenciarEmpresa.css'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 import { useAuthValue } from '../../context/AuthContext'
+import { useUpdateDocument } from '../../hooks/Atualizar/useUpdateDocument';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import ModalEditarProduto from '../../components/ModalEditarProduto/ModalEditarProduto'
+import { storage } from '../../Firebase/firebase';
 
 const GerenciarEmpresa = () => {
+    const [ produto, setProduto ] = useState([])
+
     const [empresaAtiva, setEmpresaAtiva] = useState(null);
     const [restaurante, setRestaurante] = useState([])
     const [opcao, setOpcao] = useState('')
@@ -28,6 +33,10 @@ const GerenciarEmpresa = () => {
     const [openModal, setOpenModal] = useState(false)
     const [produtoModal, setProdutoModal] = useState()
 
+    const { user } = useAuthValue()
+    const { documents: empresas } = useCarregaColecoes('empresa', null, user.uid)
+    const { updateDocument, response } = useUpdateDocument('empresa')
+
     const closeModal = () => {
         setOpenModal(false);
       };
@@ -41,8 +50,40 @@ const GerenciarEmpresa = () => {
         setOpcao(opcao)
     };
 
-    const { user } = useAuthValue()
-    const { documents: empresas } = useCarregaColecoes('empresa', null, user.uid)
+    const handleCadastroProduto = async(e) => {
+        e.preventDefault()
+        setLoading(true)
+
+        try {
+            const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
+        
+            await uploadBytes(storageRef, fotoProduto);
+            const urlProduto = await getDownloadURL(storageRef);
+
+            const novoProduto = {
+                restaurante: restaurante.nomeRestaurante,
+                nomeProduto: nomeProduto,
+                descricao: descricaoProduto,
+                fotoProduto: urlProduto,
+                precoProduto: precoProduto,
+                createdBy: user.displayName
+            };
+
+            restaurante.produtos.push(novoProduto)
+            
+            await updateDocument(restaurante.id, restaurante)
+            
+            setNomeProduto('');
+            setDescricaoProduto('');
+            setFotoProduto(null);
+            setPrecoProduto(0)
+        } catch (error) {
+                console.error('Erro:', error);
+                throw error;
+        }
+
+        setLoading(false)
+    }
 
   return (
     <section className='homeApp gerenciarEmpresa'>
@@ -64,70 +105,13 @@ const GerenciarEmpresa = () => {
       </div>
       <div className="produtosEmpresaSelecionada"> 
         <div className="titulos">
-            <h3 onClick={() => handleClickOpcoes('editarNegocios')}>Editar Negócio</h3>
             <h3 onClick={() => handleClickOpcoes('adicionarProdutos')}>Adicionar Produtos</h3>
             <h3 onClick={() => handleClickOpcoes('editarProdutos')}>Editar Produtos</h3>
         </div>
         <div className="produtosEmpresa">
             <div className={`padrao ${!opcao ? '' : 'disable'}`}>
                 <p>Selecione sua empresa, depois alguma opção acima...</p>
-            </div>
-            <div className={`editarNegocios ${opcao === 'editarNegocios' ? '' : 'disable'}`}>
-                <div className="edicaoNegocio">
-                    <h1>
-                        Edite seu Restaurante
-                    </h1>
-                    <p>
-                        Editando: {restaurante.nomeRestaurante}
-                    </p>
-                    <form className='formRegisterGerenciarEmpresa'>
-                        <span>
-                            Nome do restaurante:
-                            <input type="text" placeholder='Seu nome aqui...' onChange={(e) => setNomeRestaurante(e.target.value)} required/>
-                        </span>
-                        <span>
-                            Categoria:<br/>
-                            <select className='select' onChange={(e) => setCategoria(e.target.value)} defaultValue={'Hamburguer'} required>
-                                <option value="Hamburguer">Hamburguer</option>
-                                <option value="Japonesa">Japones</option>
-                                <option value="Salgadinhos">Salgadinhos</option>
-                                <option value="Pizza">Pizza</option>
-                                <option value="Chines">Chines</option>
-                            </select>
-                        </span>
-                        <span>
-                            Endereço:
-                            <input type="text" placeholder='Seu e-mail aqui...' required onChange={(e) => setEndereco(e.target.value)} />
-                        </span>
-                        <span >
-                            Horario de abertura:
-                            <input type="number" placeholder='Horário que abre' required onChange={(e) => setHorarioAtendimentoAbertura(e.target.value)} />
-                        </span>
-                        <span >
-                            Horario de fechamento:
-                            <input type="number" placeholder='Horário que fecha' required onChange={(e) => setHorarioAtendimentoFechamento(e.target.value)} />
-                        </span>
-                        <span>
-                            Coloque uma foto de perfil
-                            <input type="file" name="profile" required onChange={(e) => setFotoPerfil(e.target.files[0])}/>
-                        </span>
-                        <span>
-                            Coloque uma foto de banner
-                            <input type="file" name="banner" required onChange={(e) => setFotoBanner(e.target.files[0])}/>
-                        </span>
-                        <span>
-                            Descrição do seu restaurante
-                            <input type="text" placeholder='Fazemos hamburguer com amor' required onChange={(e) => setDescricao(e.target.value)}/>
-                        </span>
-                        <button>
-                            Salvar Edicoes
-                        </button>
-                        {loading && (
-                            <p className='text-center'>Carregando...</p>
-                        )}
-                    </form>
-                </div>
-            </div>
+            </div>                
             <div className={`adicionarProdutos ${opcao === 'adicionarProdutos' ? '' : 'disable'}`}>
                 <div className="editarProdutosFormRegister">
                         <h1>
@@ -153,18 +137,16 @@ const GerenciarEmpresa = () => {
                                 Preço do seu produto:
                                 <input type="number" placeholder='5,00' value={precoProduto} onChange={(e) => setPrecoProduto(e.target.value)} />
                             </span>
-                            <button>
-                                Adicionar Produto
-                            </button>
+                            {!loading ? (
+                                <button onClick={handleCadastroProduto}>
+                                    Adicionar Produto
+                                </button>
+                            ) : (
+                                <button disabled>
+                                    Carregando...
+                                </button>  
+                            )}
                         </form>
-                        {/* {loading && (
-                                <p className='text-center'>Cadastrando...</p>
-                        )}
-                        {pergunta && (
-                            <>
-                                <p className='text-center'>Cadastrado, você pode cadastrar mais ou finalizar!</p>
-                            </>
-                        )} */}
                     </div>
                 </div>
             <div className={`editarProdutos ${opcao === 'editarProdutos' ? '' : 'disable'}`}>
@@ -191,6 +173,7 @@ const GerenciarEmpresa = () => {
                         isOpen={openModal}
                         closeModal={() => setOpenModal(closeModal)}
                         produto={produtoModal}
+                        restaurante={restaurante}
                     />
                 </div>
             </div>

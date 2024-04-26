@@ -35,6 +35,7 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
   }, [isOpen, closeModal]);
 
   const handleCheckout = () => {
+    setRestauranteCarrinho(pedidoUsuario[0].restaurante)
     const queryParams = new URLSearchParams();
     queryParams.append('dados', JSON.stringify(pedidoUsuario));
     !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&valorCarrinho=${valorTotalCarrinho + 5}&restauranteCarrinho=${restauranteCarrinho}`);
@@ -92,7 +93,7 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
                     <span className='colorVerde'>Total</span>
                     <span className='colorVerde'>R$ {parseFloat(valorTotalCarrinho + 5).toFixed(2)}</span>
                   </div>
-                  <button className='btnVerde' onClick={handleCheckout}>Fazer Pedido</button>
+                  <button className='btnVerde' onClick={() => handleCheckout()}>Fazer Pedido</button>
                 </div>
               </div>
             </div>

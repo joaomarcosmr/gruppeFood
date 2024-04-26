@@ -16,9 +16,9 @@
     border-radius: 10px;
     background-color: #fefefe;
     margin: 6.5% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
     height: auto;
 }
 
@@ -68,6 +68,11 @@
     border: 1px solid grey;
     font-weight: 600;
     border-radius: 8px;
+}
+
+.botao{
+    width: 70% !important;
+    margin-left: 50px;
 }
 
 .produtoImgEditar{

@@ -3,10 +3,8 @@ import './ModalHistorico.css'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos'
 
-const ModalHistorico = ({ isOpen, closeModal, uidUsuario, idPedidoAtual }) => {
-    if(idPedidoAtual) {
-        const { document: pedidoAtual } = useCarregaDocumentos('pedidos', idPedidoAtual)
-    }
+const ModalHistorico = ({ isOpen, closeModal, uidUsuario }) => {
+    const { documents: pedidos, loading, error } = useCarregaColecoes('pedidos', uidUsuario)
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
@@ -26,8 +24,6 @@ const ModalHistorico = ({ isOpen, closeModal, uidUsuario, idPedidoAtual }) => {
         };
     }, [isOpen, closeModal]);
 
-    const { documents: pedidos, loading, error } = useCarregaColecoes('pedidos', uidUsuario)
-
     if (!isOpen) return null;
 
   return (
@@ -41,7 +37,6 @@ const ModalHistorico = ({ isOpen, closeModal, uidUsuario, idPedidoAtual }) => {
                         {new Date(pedido.createdAt.seconds * 1000).toLocaleString()}
                     </span>
                     <div className='pedidoFeito'>
-                        <h4>{pedido.restaurante}</h4>
                         <span className='concluido'><span className='check'>&#10003;</span> Pedido concluído Idº {pedido.id}</span>
                         <div className="detalhesPedido">
                             <table>
