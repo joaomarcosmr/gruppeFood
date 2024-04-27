@@ -29,6 +29,7 @@ const GerenciarEmpresa = () => {
     const [ fotoPerfil, setFotoPerfil ] = useState(null)
     const [ fotoBanner, setFotoBanner ] = useState(null)
     const [ loading, setLoading ] = useState(false)
+    const [ mensagem, setMensagem ] = useState(false)
 
     const [openModal, setOpenModal] = useState(false)
     const [produtoModal, setProdutoModal] = useState()
@@ -53,6 +54,7 @@ const GerenciarEmpresa = () => {
     const handleCadastroProduto = async(e) => {
         e.preventDefault()
         setLoading(true)
+        setMensagem(false)
 
         try {
             const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
@@ -77,6 +79,8 @@ const GerenciarEmpresa = () => {
             setDescricaoProduto('');
             setFotoProduto(null);
             setPrecoProduto(0)
+            setLoading(false)
+            setMensagem(true)
         } catch (error) {
                 console.error('Erro:', error);
                 throw error;
@@ -137,6 +141,9 @@ const GerenciarEmpresa = () => {
                                 Preço do seu produto:
                                 <input type="number" placeholder='5,00' value={precoProduto} onChange={(e) => setPrecoProduto(e.target.value)} />
                             </span>
+                            {mensagem && (
+                                <p className='sucesso'>Produto cadastrado!</p>
+                            )}
                             {!loading ? (
                                 <button>
                                     Adicionar Produto

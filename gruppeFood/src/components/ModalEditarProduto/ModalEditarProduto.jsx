@@ -34,14 +34,18 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
         setMensagem('')
 
         try {
+            console.log(produto.fotoProduto)
             if(fotoProduto != produto.fotoProduto){
                 const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
-        
+                
                 await uploadBytes(storageRef, fotoProduto);
                 const urlProduto = await getDownloadURL(storageRef);
                 
                 setFotoProduto(urlProduto)
             }
+            console.log(produto.fotoProduto)
+
+            // problema na atualização da foto
     
             const produtoAtualizado = {
                 restaurante: restaurante.nomeRestaurante,
@@ -53,13 +57,15 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
             };
     
             for(let i = 0; i < restaurante.produtos.length; i++){
+                console.log(restaurante.produtos[i])
                 if (restaurante.produtos[i].nomeProduto == produto.nomeProduto){
                     restaurante.produtos[i] = produtoAtualizado
+                    break;
                 }
-                break;
             }
-    
+
             await updateDocument(restaurante.id, restaurante)
+            console.log(response)
 
             setMensagem('Produto atualizado!')
             setLoading(false)
