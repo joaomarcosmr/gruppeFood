@@ -8,7 +8,6 @@ const Search = () => {
     
     const { documents: resultado } = useCarregaColecoes('empresa', pesquisaFeita)
 
-    console.log(res)
     return (
         <section className='homeApp searchSection'>
         <p>{pesquisaFeita}</p>

@@ -75,6 +75,7 @@
 
 .homeComidasConteudo{
     display: flex;
+    max-width: 100vw;
 }
 
 .comidasRecomendadas{

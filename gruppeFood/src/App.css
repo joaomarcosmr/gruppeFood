@@ -75,3 +75,8 @@ a{
 .iconeLoading{
     font-size: 50px;
 }
+
+a{
+    color: black;
+    text-decoration: none !important;
+}

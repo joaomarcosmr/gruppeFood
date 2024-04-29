@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Home.css'
 
 import Restaurantes from '../../components/Restaurantes/Restaurantes'
@@ -13,6 +14,7 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
     const [resultadoPesquisa, setResultadoPesquisa] = useState([])
     const [pesquisa, setPesquisa] = useState('')
     const [ativo, setAtivo] = useState(false)
+    const queryParams = new URLSearchParams();
     const navigate = useNavigate()
 
     const abrirModal = () => {
@@ -25,7 +27,6 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
 
     const handleFilter = async(e) => {
         e.preventDefault()
-        const queryParams = new URLSearchParams();
 
         navigate(`/search?${queryParams.toString()}&search=${pesquisa}`)
     }
@@ -41,40 +42,50 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
             </form>
         </div>
         <div className="homeSessoesComida">
-            <div className="cardComida">
-                <div className="sessaoComida" id="hamburguer">
-                    <img src="../../src/img/hamburguer.png" alt="" />
+            <Link to={`/search?${queryParams.toString()}&search=Lanches`} className='sessaoCard'>
+                <div className="cardComida">
+                    <div className="sessaoComida" id="hamburguer">
+                        <img src="../../src/img/hamburguer.png" alt="" />
+                    </div>
+                    <span>Lanches</span>
                 </div>
-                <span>Lanches</span>
-            </div>
+            </Link>
 
-            <div className="cardComida">
-                <div className="sessaoComida" id="pizza">
-                    <img src="../../src/img/pizza.png" alt="" />
+            <Link to={`/search?${queryParams.toString()}&search=Pizza`}>
+                <div className="cardComida">
+                    <div className="sessaoComida" id="pizza">
+                        <img src="../../src/img/pizza.png" alt="" />
+                    </div>
+                    <span>Pizza</span>
                 </div>
-                <span>Pizza</span>
-            </div>
+            </Link>
 
-            <div className="cardComida">
-                <div className="sessaoComida" id="japones">
-                    <img src="../../src/img/sushi.png" alt="" />
+            <Link to={`/search?${queryParams.toString()}&search=Japones`}>
+                <div className="cardComida">
+                    <div className="sessaoComida" id="japones">
+                        <img src="../../src/img/sushi.png" alt="" />
+                    </div>
+                    <span>Japones</span>
                 </div>
-                <span>Japones</span>
-            </div>
+            </Link>
 
-            <div className="cardComida">
-                <div className="sessaoComida" id="salgadinho">
-                    <img src="../../src/img/coxinha.png" alt="" />
+            <Link to={`/search?${queryParams.toString()}&search=Salgadinho`}>
+                <div className="cardComida">
+                    <div className="sessaoComida" id="salgadinho">
+                        <img src="../../src/img/coxinha.png" alt="" />
+                    </div>
+                    <span>Salgadinho</span>
                 </div>
-                <span>Salgadinho</span>
-            </div>
+            </Link>
 
-            <div className="cardComida">
-                <div className="sessaoComida" id="chines">
-                    <img src="../../src/img/chines.png" alt="" />
+            <Link to={`/search?${queryParams.toString()}&search=Chines`}>
+                <div className="cardComida">
+                    <div className="sessaoComida" id="chines">
+                        <img src="../../src/img/chines.png" alt="" />
+                    </div>
+                    <span>Chines</span>
                 </div>
-                <span>Chines</span>
-            </div>
+            </Link>
         </div>
 
         <div className="homeComidasRecomendadas">
