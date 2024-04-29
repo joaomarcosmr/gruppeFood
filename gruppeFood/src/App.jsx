@@ -21,6 +21,7 @@ import FinalizarPedido from "./pages/FinalizarPedido/FinalizarPedido";
 import CadastroEmpresa from "./pages/CadastroEmpresa/CadastroEmpresa";
 import GerenciarEmpresa from "./pages/GerenciarEmpresa/GerenciarEmpresa";
 import PedidoFinalizado from "./pages/PedidoFinalizado/PedidoFinalizado";
+import Search from "./pages/Search/Search";
 
 function App() {
   // parte de usuario
@@ -92,6 +93,7 @@ function App() {
           />
           <Route path="/login" element={user ? <Perfil /> : <Login />} />
           <Route path="/register" element={user ? <Home /> : <Register />} />
+          <Route path="/search" element={<Search />} />
           <Route
             path="/cadastro-empresa"
             element={user ? <CadastroEmpresa /> : <Login />}

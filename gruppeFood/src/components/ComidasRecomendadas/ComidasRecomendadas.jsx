@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 import './ComidasRecomendadas.css'
 
-const ComidasRecomendadas = ({ abrirModal, setProdutoSelecionado }) => {
+const ComidasRecomendadas = ({ abrirModal, produtoSelecionado, setProdutoSelecionado, setAtivo }) => {
   const [produtos, setProdutos] = useState([])
+  const [restauranteSelecionado, setRestauranteSelecionado] = useState([])
 
   const { documents: restaurantes, loading, error } = useCarregaColecoes('empresa')
 
@@ -11,14 +12,31 @@ const ComidasRecomendadas = ({ abrirModal, setProdutoSelecionado }) => {
     if (restaurantes) {
       const produtosToAdd = restaurantes.flatMap(empresa => empresa.produtos || []);
       if (produtosToAdd.length > 0) {
-        setProdutos(prevProdutos => [...prevProdutos, ...produtosToAdd]);
+        setProdutos(prevProdutos => [...prevProdutos.slice(0, 10 - produtosToAdd.length), ...produtosToAdd]);
       }
     }
   }, [restaurantes]);
 
+  useEffect(() => {
+    if(restauranteSelecionado){
+      const horas = new Date().getHours()
+      if(horas >= restauranteSelecionado.horarioAtendimentoAbertura && horas <= restauranteSelecionado.horarioAtendimentoFechamento){
+        setAtivo(true)
+      } else {
+        setAtivo(false)
+      }
+    }
+  }, [restauranteSelecionado])
+
   const handleClick = (produto) => {
     abrirModal()
     setProdutoSelecionado(produto);
+    
+    for(let i = 0; i < restaurantes.length; i++){
+      if(restaurantes[i].nomeRestaurante == produto.restaurante){
+        setRestauranteSelecionado(restaurantes[i])
+      }
+    }
   };
   
   return (

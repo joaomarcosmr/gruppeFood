@@ -43,6 +43,7 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) =>
   const handleCheckout = () => {
     setRestauranteCarrinho(pedidoUsuario[0].restaurante)
     const queryParams = new URLSearchParams();
+
     !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&enderecoUser=${usuario.userAddress}`);
     closeModal()
   }

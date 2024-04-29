@@ -19,8 +19,8 @@ a{
 }
 
 .btnVerde{
-    color: white;
-    background-color: rgb(5, 185, 59);
+    color: white !important;
+    background-color: rgb(5, 185, 59) !important;
     cursor: pointer;
 }
 

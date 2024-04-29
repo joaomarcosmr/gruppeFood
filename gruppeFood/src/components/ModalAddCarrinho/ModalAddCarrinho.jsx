@@ -3,7 +3,7 @@ import './ModalAddCarrinho.css'
 import { useNavigate } from 'react-router-dom'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
 
-const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPrecoCarrinho, setRestaurante}) => {
+const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPrecoCarrinho, setRestaurante, ativo}) => {
     const [ numeroProdutos, setNumeroProdutos ] = useState(1)
     const [ restauranteSelecionado, setRestauranteSelecionado ] = useState('')
     const { documents: restaurantes, loading, error } = useCarregaColecoes('empresa')
@@ -53,7 +53,11 @@ const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNu
                         <span>Tempo de entrega: 40-50 min</span>
                         <span className='preco'>R$ {produto.precoProduto}</span>
                         <input type="number" defaultValue={1} onChange={(e) => setNumeroProdutos(e.target.value)}/>
-                        <button className='btnVerde' onClick={() => handleCarrinho()}>Adicionar ao carrinho</button>
+                        {!ativo ? (
+                            <button disabled>Restaurante Fechado</button>
+                        ) : (
+                            <button className='btnVerde' onClick={() => handleCarrinho()}>Adicionar ao carrinho</button>
+                        )}
                     </div>
                 </div>
             </div>

@@ -12,7 +12,6 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
 
     useEffect(() => {
        const loadData = async () => {
-            let q;
 
             if(cancelled) return
 
@@ -21,31 +20,35 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
             const collectionRef = await collection(db, docCollection)
 
             try {
-                
-                q = await query(collectionRef, 
-                    orderBy('createdAt', 'desc'))
-
-                if (uid) {
-                    q = query(q, where('uid', '==', uid));
-                }
+                let q;
 
                 if (search) {
-                    q = query(q, where('nomeProduto', '==', search));
-                    q = query(q, where('nomeRestaurante', '==', search));
-                }
-                
-                await onSnapshot(q, (querySnapshot) => {
-                    setDocuments(
-                        querySnapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                        }))
+                    q = query(
+                        collectionRef,
+                        where("produtos", "array-contains", search),
+                        orderBy("createdAt", "desc")
                     );
+                } else if (uid) {
+                  q = await query(
+                    collectionRef,
+                    where("uid", "==", uid),
+                    orderBy("createdAt", "desc")
+                  );
+                } else {
+                  q = await query(collectionRef, orderBy("createdAt", "desc"));
+                }
+        
+                await onSnapshot(q, (querySnapshot) => {
+                  setDocuments(
+                    querySnapshot.docs.map((doc) => ({
+                      id: doc.id,
+                      ...doc.data(),
+                    }))
+                  );
                 });
-
                 setLoading(false)
             } catch (error) {
-                
+                console.error(error)
             }
        }
 

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import './ModalHistorico.css'
 import { useCarregaColecoes } from '../../hooks/Cadastros/useCarregaColecoes'
-import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos'
 
 const ModalHistorico = ({ isOpen, closeModal, uidUsuario }) => {
-    const { documents: pedidos, loading, error } = useCarregaColecoes('pedidos', uidUsuario)
+    const { documents: pedidos, loading, error } = useCarregaColecoes('pedidos', null, uidUsuario)
 
     useEffect(() => {
         const handleOutsideClick = (e) => {

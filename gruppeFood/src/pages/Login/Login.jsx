@@ -3,13 +3,23 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAutenticar } from '../../hooks/Autenticacao/useAutenticar'
 import './Login.css'
+import ModalEsqueciSenha from '../../components/ModalEsqueciSenha/ModalEsqueciSenha'
 
 const Login = () => {
   const [ email, setEmail] = useState('')
   const [ senha, setSenha ] = useState('')
   const [ mensagem, setMensagem ] = useState('')
+  const [openModal, setOpenModal] = useState(false)
 
   const { logarConta, error, loading } = useAutenticar()
+  
+  const abrirModal = () => {
+    setOpenModal(true);
+  };
+
+const closeModal = () => {
+    setOpenModal(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,7 +30,7 @@ const Login = () => {
       senha: senha,
     }
 
-    const usuario = await logarConta(dados)
+    await logarConta(dados)
   }
 
   return (
@@ -59,9 +69,13 @@ const Login = () => {
                     </span>
                 ) : (
                   <span className='esqueciASenha'>
-                    Se você esqueceu sua senha <Link to='/recuperacaoSenha'><b>aperte aqui...</b></Link>
+                    Se você esqueceu sua senha <span onClick={abrirModal} style={{cursor: 'pointer'}}><b>aperte aqui...</b></span>
                   </span>
           )}
+          <ModalEsqueciSenha 
+            isOpen={openModal}
+            closeModal={() => setOpenModal(closeModal)}
+          />
 
       </div>
     </section>
