@@ -21,12 +21,14 @@ a{
 .btnVerde{
     color: white;
     background-color: rgb(5, 185, 59);
+    cursor: pointer;
 }
 
 .btnVermelho{
     color: white;
     margin-top: 10px;
     background-color: red;
+    cursor: pointer;
 }
 
 .check{

@@ -11,6 +11,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
 
     const [loading, setLoading] = useState(true)
 
+    const [produtos, setProdutos] = useState([])
     const [nomeProduto, setNomeProduto] = useState('')
     const [fotoProduto, setFotoProduto] = useState(null)
     const [descricaoProduto, setDescricaoProduto] = useState('')
@@ -24,59 +25,10 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
             setDescricaoProduto(produto.descricao)
             setFotoProduto(produto.fotoProduto)
             setPrecoProduto(produto.precoProduto)
+            setProdutos(restaurante.produtos)
             setLoading(false)
         }
     }, [produto]); 
-
-    const handleUpdate = async(e) => {
-        e.preventDefault()
-        setLoading(true)
-        setMensagem('')
-
-        try {
-            console.log(produto.fotoProduto)
-            if(fotoProduto != produto.fotoProduto){
-                const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
-                
-                await uploadBytes(storageRef, fotoProduto);
-                const urlProduto = await getDownloadURL(storageRef);
-                
-                setFotoProduto(urlProduto)
-            }
-            console.log(produto.fotoProduto)
-
-            // problema na atualização da foto
-    
-            const produtoAtualizado = {
-                restaurante: restaurante.nomeRestaurante,
-                nomeProduto: nomeProduto,
-                descricao: descricaoProduto,
-                fotoProduto: fotoProduto,
-                precoProduto: precoProduto,
-                createdBy: user.displayName
-            };
-    
-            for(let i = 0; i < restaurante.produtos.length; i++){
-                console.log(restaurante.produtos[i])
-                if (restaurante.produtos[i].nomeProduto == produto.nomeProduto){
-                    restaurante.produtos[i] = produtoAtualizado
-                    break;
-                }
-            }
-
-            await updateDocument(restaurante.id, restaurante)
-            console.log(response)
-
-            setMensagem('Produto atualizado!')
-            setLoading(false)
-        } catch (error) {
-            console.error(error)
-        }
-
-
-        setLoading(false)
-    }
-
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
@@ -96,6 +48,65 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
         };
     }, [isOpen, closeModal]);
 
+    const handleUpdate = async(e) => {
+        e.preventDefault()
+        setLoading(true)
+        setMensagem('')
+
+        try {
+            if(fotoProduto !== produto.fotoProduto){
+                const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
+                
+                await uploadBytes(storageRef, fotoProduto);
+                const urlProduto = await getDownloadURL(storageRef);
+                
+                setFotoProduto(urlProduto)
+            }
+    
+            const produtoAtualizado = {
+                restaurante: restaurante.nomeRestaurante,
+                nomeProduto: nomeProduto,
+                descricao: descricaoProduto,
+                fotoProduto: fotoProduto,
+                precoProduto: precoProduto,
+                createdBy: user.displayName
+            };
+    
+            for(let i = 0; i < restaurante.produtos.length; i++){
+                if (restaurante.produtos[i].nomeProduto == produto.nomeProduto){
+                    restaurante.produtos[i] = produtoAtualizado
+                    break;
+                }
+            }
+
+            await updateDocument(restaurante.id, restaurante)
+
+            setMensagem('Produto atualizado!')
+            setLoading(false)
+        } catch (error) {
+            console.error(error)
+        }
+
+
+        setLoading(false)
+    }
+
+    const handleDeleteProduct = async() => {
+        setLoading(true)
+        setMensagem('')
+        for(let i = 0; i < restaurante.produtos.length; i++){
+            if (restaurante.produtos[i].nomeProduto == produto.nomeProduto){
+                produtos.splice(i, 1)
+                break;
+            }
+        }
+
+        restaurante.produtos = produtos
+
+        await updateDocument(restaurante.id, restaurante)
+        setLoading(false)
+        setMensagem('Excluído com sucesso!')
+    }
 
   if(isOpen){
     return (
@@ -138,7 +149,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
                                 </button>  
                             )}
                         </form>
-                            <button className='btnVermelho botao'>
+                            <button className='btnVermelho botao' onClick={handleDeleteProduct}>
                                 Excluir Produto
                             </button>
                     </div>

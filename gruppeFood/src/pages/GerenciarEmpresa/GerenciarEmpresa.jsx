@@ -6,6 +6,7 @@ import { useUpdateDocument } from '../../hooks/Atualizar/useUpdateDocument';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import ModalEditarProduto from '../../components/ModalEditarProduto/ModalEditarProduto'
 import { storage } from '../../Firebase/firebase';
+import ModalCertezaExcluir from '../../components/ModalCertezaExcluir/ModalCertezaExcluir';
 
 const GerenciarEmpresa = () => {
     const [ produto, setProduto ] = useState([])
@@ -32,6 +33,7 @@ const GerenciarEmpresa = () => {
     const [ mensagem, setMensagem ] = useState(false)
 
     const [openModal, setOpenModal] = useState(false)
+    const [openModalExcluir, setOpenModalExcluir] = useState(false)
     const [produtoModal, setProdutoModal] = useState()
 
     const { user } = useAuthValue()
@@ -40,6 +42,7 @@ const GerenciarEmpresa = () => {
 
     const closeModal = () => {
         setOpenModal(false);
+        setOpenModalExcluir(false)
       };
 
     const handleClick = (index, empresa) => {
@@ -102,7 +105,12 @@ const GerenciarEmpresa = () => {
                 >
                     <img src={empresa.fotoPerfil} alt={empresa.nomeRestaurante} />
                     <p>{empresa.nomeRestaurante}</p>
-                    <span className='removeIcon'>&times;</span>
+                    <span className='removeIcon' onClick={() => setOpenModalExcluir(true)}>&times;</span>
+                    <ModalCertezaExcluir 
+                        isOpen={openModalExcluir}
+                        closeModal={() => setOpenModal(closeModal)}
+                        restaurante={restaurante}
+                    />
                 </div>
             ))}
         </div>
