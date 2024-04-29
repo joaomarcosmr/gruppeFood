@@ -59,34 +59,36 @@ const GerenciarEmpresa = () => {
         setLoading(true)
         setMensagem(false)
 
-        try {
-            const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
-        
-            await uploadBytes(storageRef, fotoProduto);
-            const urlProduto = await getDownloadURL(storageRef);
-
-            const novoProduto = {
-                restaurante: restaurante.nomeRestaurante,
-                nomeProduto: nomeProduto,
-                descricao: descricaoProduto,
-                fotoProduto: urlProduto,
-                precoProduto: precoProduto,
-                createdBy: user.displayName
-            };
-
-            restaurante.produtos.push(novoProduto)
+        if(restaurante){
+            try {
+                const storageRef = ref(storage, `restaurantes/${nomeProduto}-logo/`);
             
-            await updateDocument(restaurante.id, restaurante)
-            
-            setNomeProduto('');
-            setDescricaoProduto('');
-            setFotoProduto(null);
-            setPrecoProduto(0)
-            setLoading(false)
-            setMensagem(true)
-        } catch (error) {
-                console.error('Erro:', error);
-                throw error;
+                await uploadBytes(storageRef, fotoProduto);
+                const urlProduto = await getDownloadURL(storageRef);
+    
+                const novoProduto = {
+                    restaurante: restaurante.nomeRestaurante,
+                    nomeProduto: nomeProduto,
+                    descricao: descricaoProduto,
+                    fotoProduto: urlProduto,
+                    precoProduto: precoProduto,
+                    createdBy: user.displayName
+                };
+    
+                restaurante.produtos.push(novoProduto)
+                
+                await updateDocument(restaurante.id, restaurante)
+                
+                setNomeProduto('');
+                setDescricaoProduto('');
+                setFotoProduto(null);
+                setPrecoProduto(0)
+                setLoading(false)
+                setMensagem(true)
+            } catch (error) {
+                    console.error('Erro:', error);
+                    throw error;
+            }
         }
 
         setLoading(false)

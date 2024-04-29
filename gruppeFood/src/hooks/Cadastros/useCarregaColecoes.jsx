@@ -29,6 +29,11 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
                     q = query(q, where('uid', '==', uid));
                 }
 
+                if (search) {
+                    q = query(q, where('nomeProduto', '==', search));
+                    q = query(q, where('nomeRestaurante', '==', search));
+                }
+                
                 await onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({

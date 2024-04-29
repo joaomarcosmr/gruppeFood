@@ -2,18 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { useAuthValue } from '../../context/AuthContext';
 import './ModalPedido.css';
 import { useNavigate } from 'react-router-dom';
+import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos';
 
-const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
+const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) => {
   const [valorTotalCarrinho, setValorTotalCarrinho] = useState(0)
   const [restauranteCarrinho, setRestauranteCarrinho] = useState('')
+  const [pedidoUsuarioLocal, setPedidoUsuarioLocal] = useState(pedidoUsuario);
+
 
   const { user } = useAuthValue()
   const navigate = useNavigate()
+  const { document: usuario, loading, error } = useCarregaDocumentos('users', user ? user.uid : null);
 
   useEffect(() => {
+    let preco = 0
     for(let i = 0; i < pedidoUsuario.length; i++){
-      setValorTotalCarrinho(valorTotalCarrinho + (pedidoUsuario[i].precoCarrinho * pedidoUsuario[i].numItensCarrinho))
+      preco += pedidoUsuario[i].precoCarrinho * pedidoUsuario[i].numItensCarrinho
     }
+    setValorTotalCarrinho(preco)
   }, [pedidoUsuario])
 
   useEffect(() => {
@@ -37,10 +43,15 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
   const handleCheckout = () => {
     setRestauranteCarrinho(pedidoUsuario[0].restaurante)
     const queryParams = new URLSearchParams();
-    queryParams.append('dados', JSON.stringify(pedidoUsuario));
-    !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&valorCarrinho=${valorTotalCarrinho + 5}&restauranteCarrinho=${restauranteCarrinho}`);
+    !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&enderecoUser=${usuario.userAddress}`);
     closeModal()
   }
+
+  const deleteProductArray = (index) => {
+    const updatedPedido = [...pedidoUsuario];
+    updatedPedido.splice(index, 1);
+    setPedidoUsuario(updatedPedido);
+  };
 
     return (
       <>
@@ -80,7 +91,7 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario }) => {
                           <td>
                             R$ {parseFloat(produto.precoCarrinho).toFixed(2)}
                           </td>
-                          <td className='close'>&times;</td>
+                          <td className='close' onClick={() => deleteProductArray(index)}>&times;</td>
                         </tr>
                       ))}
                     </tbody>

@@ -72,7 +72,10 @@ function App() {
   return (
     <AuthProvider value={{ user }}>
       <BrowserRouter>
-        <Navbar pedidoUsuario={pedido} />
+        <Navbar 
+          pedidoUsuario={pedido}
+          setPedidoUsuario={setPedido} 
+        />
         <Routes>
           <Route
             index
@@ -112,7 +115,11 @@ function App() {
           />
           <Route
             path="/checkout"
-            element={!user ? <Login /> : <FinalizarPedido />}
+            element={!user ? <Login /> : 
+          <FinalizarPedido 
+            pedidoUsuario={pedido}
+            setPedidoUsuario={setPedido}
+          />}
           />
           <Route
             path="/pedido-finalizado/:id"

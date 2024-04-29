@@ -5,12 +5,22 @@ import { db, auth } from '../../Firebase/firebase'
 import { Link } from 'react-router-dom'
 import { signOut } from "firebase/auth";
 import ModalHistorico from '../../components/ModalHistorico/ModalHistorico'
+import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos'
 
 const Perfil = () => {
-  const [ loading, setLoading ] = useState(false)
   const { user } = useAuthValue()
+  const { document: usuario, loading: carregando, error } = useCarregaDocumentos('users', user.uid)
 
+  const [ loading, setLoading ] = useState(false)
   const [openModal, setOpenModal] = useState(false)
+  const [endereco, setEndereco] = useState('')
+
+  useEffect(() => {
+    if (usuario) {
+      setEndereco(usuario.userAddress);
+    }
+  }, [usuario]);
+  
 
   const abrirModal = () => {
       setOpenModal(true);
@@ -48,7 +58,7 @@ const Perfil = () => {
             </span>
             <span>
                 Endereço:
-                <input type="text" disabled value={user.displayName}/>
+                <input type="text" disabled value={endereco}/>
             </span>
         </div>
       </div>

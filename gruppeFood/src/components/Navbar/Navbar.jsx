@@ -3,16 +3,21 @@ import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 import ModalPedido from '../ModalPedido/ModalPedido'
 
-const Navbar = ({ pedidoUsuario }) => {
+const Navbar = ({ pedidoUsuario, setPedidoUsuario }) => {
     const [openModal, setOpenModal] = useState(false)
     const [valorCarrinho, setValorCarrinho] = useState(0)
     const [numItensCarrinho, setNumItensCarrinho] = useState(0)
 
+    //Arrumar lógica
     useEffect(() => {
+        let preco = 0;
+        let carrinho = 0;
         for(let i = 0; i < pedidoUsuario.length; i++){
-            parseFloat(setValorCarrinho((valorCarrinho + pedidoUsuario[i].valorCarrinho)))
-            setNumItensCarrinho(numItensCarrinho + parseInt(pedidoUsuario[i].numItensCarrinho))
+            preco += parseFloat(pedidoUsuario[i].valorCarrinho)
+            carrinho += parseInt(pedidoUsuario[i].numItensCarrinho)
         }
+        setValorCarrinho(preco)
+        setNumItensCarrinho(carrinho)
     }, [pedidoUsuario])
 
     const closeModal = () => {
@@ -52,6 +57,7 @@ const Navbar = ({ pedidoUsuario }) => {
                             isOpen={openModal}
                             closeModal={() => setOpenModal(closeModal)}
                             pedidoUsuario={pedidoUsuario}
+                            setPedidoUsuario={setPedidoUsuario}
                         />
                     </div>  
                 </div>

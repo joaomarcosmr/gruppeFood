@@ -25,7 +25,8 @@ export const useAutenticar = () => {
 
             const userRef = doc(db, 'users', user.uid);
             await setDoc(userRef, {
-                userAddress: dados.endereco
+                userAddress: dados.endereco,
+                uid: user.uid
             });
     
             setLoading(false);
