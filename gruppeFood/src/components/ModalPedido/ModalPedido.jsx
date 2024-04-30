@@ -7,8 +7,6 @@ import { useCarregaDocumentos } from '../../hooks/Cadastros/useCarregaDocumentos
 const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) => {
   const [valorTotalCarrinho, setValorTotalCarrinho] = useState(0)
   const [restauranteCarrinho, setRestauranteCarrinho] = useState('')
-  const [pedidoUsuarioLocal, setPedidoUsuarioLocal] = useState(pedidoUsuario);
-
 
   const { user } = useAuthValue()
   const navigate = useNavigate()
@@ -42,6 +40,8 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) =>
 
   const handleCheckout = () => {
     setRestauranteCarrinho(pedidoUsuario[0].restaurante)
+    pedidoUsuario.uid = usuario.uid
+
     const queryParams = new URLSearchParams();
 
     !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&enderecoUser=${usuario.userAddress}`);

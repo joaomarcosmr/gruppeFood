@@ -1,3 +1,56 @@
+@media only screen and (max-width: 600px) {
+    .finalizarPedidoSection{
+        display: grid;
+        grid-template-columns: auto !important;
+        margin: 0 auto;
+        width: 80%;
+        height: 100% !important;
+    }
+
+    .infoEntrega{
+        order: 2;
+        margin-top: 30px;
+        width: 100% !important;
+    }
+
+    .infoPedido{
+        order: 1;
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .tabelaFinalizarPedido{
+        width: 120% !important;
+        max-height: 250px !important; 
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .finalizarPedidoSection{
+        display: grid;
+        grid-template-columns: auto !important;
+        margin: 0 auto;
+        width: 80%;
+        height: 100% !important;
+    }
+
+    .infoEntrega{
+        order: 2;
+        margin-top: 30px;
+        width: 100% !important;
+    }
+
+    .infoPedido{
+        order: 1;
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .tabelaFinalizarPedido{
+        max-height: 250px !important; 
+    }
+}
+
 .finalizarPedidoSection{
     display: grid;
     grid-template-columns: auto auto;

@@ -137,7 +137,7 @@ const ModalEditarProduto = ({ isOpen, closeModal, produto, restaurante }) => {
                                 <input type="number" defaultValue={`${parseInt(produto.precoProduto)}`} required onChange={(e) => setPrecoProduto(e.target.value)}/>
                             </span>
                             {mensagem &&(
-                                <p className='sucessoAtualizado'>{mensagem}</p>
+                                <p style={{color: 'green', textAlign: 'center', marginBottom: '5px'}}>{mensagem}</p>
                             )}
                             {!loading ? (
                                 <button className='btnVerde'>

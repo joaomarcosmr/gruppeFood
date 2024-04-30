@@ -1,3 +1,75 @@
+@media only screen and (max-width: 600px) {
+    .ModalEditarProdutoPedidos{
+        overflow: hidden !important;
+    }
+
+    .modal-content-produto{
+        padding: 0px !important;
+        padding-top: 70px !important;
+        width: 100% !important;
+        height: 100vh !important;
+    }
+
+    .close{
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .produtoInfoEditar{
+        width: 100vw !important;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .produtoCadastroEditar{
+        width: 100% !important;
+    }
+
+    .produtoCadastroEditar form{
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        margin: 0 !important;
+    }
+
+    .produtoImgEditar{
+        width: 60% !important;
+    }
+
+    .produtoCadastroEditar span{
+        padding: 0px 15px;
+    }
+    
+    .produtoCadastroEditar input{
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding: 5px 15px !important;
+        width: 85% !important;
+    }
+
+    .produtoCadastroEditar button{
+        margin: 0 auto !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (min-width: 992px) {
+    
+}
+
+@media only screen and (min-width: 1200px) {
+    
+}
+
 .ModalEditarProdutoPedidos{
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -35,6 +107,7 @@
 .produtoCadastroEditar form{
     margin-left: 40px;
 }
+
 .produtoCadastroEditar span{
     margin-bottom: 10px;
     margin-top: 20px;
@@ -68,11 +141,6 @@
     border: 1px solid grey;
     font-weight: 600;
     border-radius: 8px;
-}
-
-.botao{
-    width: 70% !important;
-    margin-left: 65px;
 }
 
 .produtoImgEditar{

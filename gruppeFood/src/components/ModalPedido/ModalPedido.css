@@ -1,3 +1,96 @@
+@media only screen and (max-width: 600px) {
+    .modalPedido{
+        width: 100% !important;
+    }
+
+    .tabelaProdutos{
+        max-height: 280px !important;
+        width: 100% !important;
+    }
+
+    .infoTotalPedido{
+        top: 60vh !important;
+    }
+
+    .modalPedido-null{
+        width: 100% !important;
+        height: 120px !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .modalPedido{
+        width: 70% !important;
+    }
+
+    .tabelaProdutos{
+        max-height: 680px !important;
+    }
+
+    .infoTotalPedido{
+        top: 780px !important;
+    }
+
+    .modalPedido-null{
+        width: 100% !important;
+        height: 100px !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .modalPedido{
+        width: 50% !important;
+    }
+
+    .tabelaProdutos{
+        max-height: 480px !important;
+    }
+
+    .infoTotalPedido{
+        top: 600px !important;
+    }
+
+    .modalPedido-null{
+        width: 100% !important;
+        height: 100px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .modalPedido{
+        width: 30% !important;
+    }
+
+    .tabelaProdutos{
+        margin-top: 25px !important;
+        max-height: 300px !important;
+    }
+
+    .infoTotalPedido{
+        top: 340px !important;
+    }
+
+    .modalPedido-null{
+        width: 100% !important;
+        height: 100px !important;
+    }
+}
+
+@media only screen and (min-width: 1480px) {
+    .tabelaProdutos{
+        max-height: 600px !important;
+    }
+
+    .infoTotalPedido{
+        top: 660px !important;
+    }
+
+    .modalPedido-null{
+        width: 100% !important;
+        height: 100px !important;
+    }
+}
+
 .modalPedido{
     cursor: auto;
     display: block;

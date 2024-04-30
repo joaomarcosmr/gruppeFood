@@ -1,3 +1,121 @@
+@media screen and (max-width: 600px) {
+    .logoRestaurante{
+        margin-top: 20px !important;
+        margin-left: 3px !important;
+        margin-bottom: 20px !important;
+        width: 120px;
+        height: 120px;
+    }
+
+    .info{
+        margin-top: -120px !important;
+        margin-left: 150px !important;
+    }
+
+    .sessaoProdutos{
+        grid-template-columns: 80vw !important;
+    }
+
+    .produtoCadastradoInfo{
+        width: 250px;
+    }
+
+    .produtoCadastradoImg{
+        width: 200px !important;
+        height: 150px !important;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .logoRestaurante{
+        margin-top: -40px !important;
+        margin-left: 35px !important;
+        margin-bottom: 10px !important;
+        width: 120px;
+        height: 120px;
+    }
+
+    .info{
+        margin-top: -76px !important;
+        margin-left: 180px !important;
+    }
+
+    .sessaoProdutos{
+        grid-template-columns: 80vw !important;
+    }
+
+    .produtoCadastradoInfo{
+        width: 300px !important;
+    }
+
+    .produtoCadastradoImg{
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .banner{
+        margin: 0 auto !important;
+        max-width: 1200px !important;
+        height: 380px !important;
+    }
+
+    .banner img{
+        background-size: cover !important;
+
+    }
+
+    .sessaoProdutos{
+        grid-template-columns: 450px 450px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .logoRestaurante{
+        margin-top: -20px !important;
+        margin-left: 30px !important;
+        margin-bottom: 10px !important;
+        width: 120px;
+        height: 120px;
+    }
+
+    .info{
+        margin-left: 180px !important;
+    }
+
+    .sessaoProdutos{
+        grid-template-columns: 500px 500px !important;
+    }
+
+    .textHeader{
+        width: 950px !important;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .logoRestaurante{
+        margin-top: -20px !important;
+        margin-left: 200px !important;
+        margin-bottom: 10px !important;
+        width: 120px;
+        height: 120px;
+    }
+
+    .info{
+        margin-left: 380px !important;
+    }
+
+    .sessaoProdutos{
+        grid-template-columns: 700px 700px !important;
+    }
+
+    .textHeader{
+        width: 1200px !important;
+    }
+}
+
+
 .restaurantePage{
     height: 100%;
     overflow: hidden;
@@ -18,6 +136,11 @@
     margin-bottom: 10px;
     width: 120px;
     height: 120px;
+}
+
+.textHeader{
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .banner img,
@@ -49,6 +172,9 @@
 
 .produtosRestaurante{
     margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sessaoProdutos{
@@ -61,7 +187,8 @@
 .produtoCadastrado{
     cursor: pointer;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     margin: 10px;
     padding: 15px;
     border: 1px solid rgba(0, 0, 0, 0.199);
@@ -73,6 +200,8 @@
 }
 
 .produtoCadastrado span{
+    display: flex;
+    align-items: center;
     width: 85%;
     color: grey;
     font-size: 15px;
@@ -82,6 +211,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 100%;
 }
 
 .produtoCadastradoInfo h3{
@@ -105,4 +235,5 @@
 .produtoCadastradoImg img{
     width: 100%;
     height: 100%;
+    border-radius: 8px;
 }

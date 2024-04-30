@@ -1,5 +1,173 @@
+@media screen and (max-width: 600px) {
+    .homeSearch{
+        margin-left: 0px !important;
+    }
+
+    .homeSearch input{
+        margin-top: 30px;
+        padding: 10px 50px 10px 5px !important;
+        width: 250px !important;
+    }
+
+    .slider{
+        max-width: 100% !important;
+        overflow-x: scroll !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px !important; /* largura da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: transparent !important; /* cor do fundo da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: transparent !important; /* cor do controle de rolagem */
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: transparent!important; /* cor do controle de rolagem quando o cursor está sobre ele */
+    }
+
+    .homeComidasRecomendadas{
+        margin-left: -35px !important;
+    }
+
+    .homeRestaurantesConteudo{
+        margin-left: -12px !important;
+        grid-template-columns: 450px !important;
+    }
+
+    .slider-container{
+        margin-left: 70px !important;
+    }
+
+    .homeComidasConteudo{
+        padding: 10px;
+        margin-left: 10px;
+        overflow-x: scroll !important;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .homeComidasRecomendadas{
+        margin-left: -50px !important;
+    }
+
+    .homeRestaurantesConteudo{
+        margin-left: -30px;
+        grid-template-columns: 450px !important;
+    }
+
+    .slider-container{
+        margin-left: 150px !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px !important; /* largura da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: transparent !important; 
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: transparent!important; 
+    }
+
+    .slider{
+        max-width: 100% !important;
+        overflow-x: scroll !important;
+    }
+
+    .homeComidasConteudo{
+        padding: 10px;
+        width: 100%;
+        margin-left: 10px;
+        overflow-x: scroll !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .homeRestaurantesConteudo{
+        margin-left: -30px;
+        grid-template-columns: 400px 400px !important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .homeRestaurantesConteudo{
+        grid-template-columns: auto auto auto !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .slider-container{
+        margin-left: 250px !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px !important; /* largura da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1 !important; /* cor do fundo da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgb(5, 185, 59) !important; /* cor do controle de rolagem */
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(5, 185, 59) !important; /* cor do controle de rolagem quando o cursor está sobre ele */
+    }
+
+    .slider-container{
+        margin-left: 250px !important;
+    }
+
+    .slider{
+        overflow-x: hidden !important;
+    }
+
+    .homeComidasConteudo{
+        overflow-x: hidden !important;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .slider-container{
+        margin-left: 370px !important;
+    }
+}
+
+.slider-container{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-left: 155px;
+}
+
+.slider{
+    display: flex;
+    overflow: hidden;
+    margin-top: 35px;
+    margin-bottom: 2px;
+}
+
+.cardComida{
+    margin-right: 40px;
+}
+
 .homeSection{
     height: calc(100% - 70px) !important;
+    width: 100%;
+    overflow: hidden;
 }
 
 .homeSearch{
@@ -87,6 +255,7 @@
 
 .homeRestaurantes{
     margin-top: 45px;
+    margin-bottom: 10px;
     width: 80%;
 }
 

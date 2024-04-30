@@ -51,7 +51,7 @@ const ModalCertezaExcluir = ({ isOpen, closeModal, restaurante }) => {
     <div className='modalCertezaExcluir'>
     <div className="modal-content-historico">
         <span className='close' onClick={closeModal}> &times;</span>
-        <h4>Tem certeza que deseja apagar o restaurante {restaurante.nomeRestaurante}?</h4>
+        <h4 className='text-center'>Tem certeza que deseja apagar o restaurante {restaurante.nomeRestaurante}?</h4>
         <div className="opcoes">
             <button className='btnVerde' onClick={handleExcluirRestaurante}>Sim, quero apagar</button>
             <button className='btnVermelho' onClick={closeModal}>Não, cancelar</button>

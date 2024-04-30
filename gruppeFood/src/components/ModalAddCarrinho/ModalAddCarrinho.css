@@ -1,3 +1,195 @@
+@media only screen and (max-width: 600px) {
+    .ModalAddCarrinho{
+        width: 100vw !important; /* Full width */
+        height: 100vh !important; /* Full height */
+    }
+
+    .modal-content-carrinho{
+        padding-top: 50px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .close{
+        margin: 0px !important;
+        padding-right: 50px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .produtoInfoEditar{
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar{
+        margin: 0px !important;
+        padding: 0px !important;
+        margin-right: 10px !important;
+        width: 150px !important;
+        height: 150px !important;
+        margin-left: -50px !important;
+    }
+
+    .produtoCarrinhoEditar{
+        width: calc(80% - 150px) !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar img{
+        width: 100%;
+    }
+
+    .produtoCarrinhoEditar{
+        margin: 0px !important;
+    }
+    
+    .produtoBotoes{
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        margin-left: -40px !important;
+    }
+
+    .produtoBotoes input{
+        width: 10%;
+    }
+
+    .produtoBotoes button{
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .ModalAddCarrinho{
+        width: 100vw !important; /* Full width */
+        height: 100vh !important; /* Full height */
+    }
+
+    .modal-content-carrinho{
+        padding-top: 50px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .close{
+        margin: 0px !important;
+        padding-right: 50px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .produtoInfoEditar{
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar{
+        margin: 0px !important;
+        padding: 0px !important;
+        margin-right: 10px !important;
+        width: 150px !important;
+        height: 150px !important;
+        margin-left: -50px !important;
+    }
+
+    .produtoCarrinhoEditar{
+        width: calc(80% - 150px) !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar img{
+        width: 100%;
+    }
+
+    .produtoCarrinhoEditar{
+        margin: 0px !important;
+    }
+    
+    .produtoBotoes{
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        margin-left: -40px !important;
+    }
+
+    .produtoBotoes input{
+        width: 10%;
+    }
+
+    .produtoBotoes button{
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ModalAddCarrinho{
+        width: 100vw !important; /* Full width */
+        height: 100vh !important; /* Full height */
+    }
+
+    .modal-content-carrinho{
+        padding-top: 50px !important;
+        width: 50% !important;
+        height: auto !important;
+    }
+
+    .close{
+        margin: 0px !important;
+        padding-right: 50px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .produtoInfoEditar{
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar{
+        margin: 0px !important;
+        padding: 0px !important;
+        margin-right: 10px !important;
+        width: 150px !important;
+        height: 150px !important;
+        margin-left: -50px !important;
+    }
+
+    .produtoCarrinhoEditar{
+        width: calc(80% - 150px) !important;
+    }
+
+    .produtoInfoEditar .produtoImgEditar img{
+        width: 100%;
+    }
+
+    .produtoCarrinhoEditar{
+        margin: 0px !important;
+    }
+    
+    .produtoBotoes{
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        margin-left: 0px !important;
+    }
+
+    .produtoBotoes input{
+        width: 10%;
+    }
+
+    .produtoBotoes button{
+        width: 80%;
+        padding: 10px;
+    }
+}
+
 .ModalAddCarrinho{
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */

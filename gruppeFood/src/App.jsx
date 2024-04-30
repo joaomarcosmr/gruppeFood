@@ -65,7 +65,7 @@ function App() {
   if (usuarioCarregando) {
     return (
       <div className="carregando">
-        <FontAwesomeIcon icon={faSpinnerThird} spin className="iconeLoading" />
+        <FontAwesomeIcon icon={faSpinnerThird} style={{color: 'rgb(5, 185, 59)'}} spin className="iconeLoading" />
       </div>
     );
   }

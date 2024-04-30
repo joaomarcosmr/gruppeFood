@@ -52,13 +52,15 @@ const ModalAddCarrinho = ({ isOpen, closeModal, produto, setValorCarrinho, setNu
                         <hr />
                         <span>Tempo de entrega: 40-50 min</span>
                         <span className='preco'>R$ {produto.precoProduto}</span>
-                        <input type="number" defaultValue={1} onChange={(e) => setNumeroProdutos(e.target.value)}/>
-                        {!ativo ? (
-                            <button disabled>Restaurante Fechado</button>
-                        ) : (
-                            <button className='btnVerde' onClick={() => handleCarrinho()}>Adicionar ao carrinho</button>
-                        )}
                     </div>
+                </div>
+                <div className="produtoBotoes">
+                    <input type="number" defaultValue={1} onChange={(e) => setNumeroProdutos(e.target.value)}/>
+                    {!ativo ? (
+                        <button disabled>Restaurante Fechado</button>
+                    ) : (
+                        <button className='btnVerde' onClick={() => handleCarrinho()}>Adicionar ao carrinho</button>
+                    )}
                 </div>
             </div>
         </div>

@@ -51,7 +51,9 @@ const GerenciarEmpresa = () => {
     };
 
     const handleClickOpcoes = (opcao) => {
-        setOpcao(opcao)
+        if(empresas.length > 0){
+            setOpcao(opcao)
+        }
     };
 
     const handleCadastroProduto = async(e) => {
@@ -115,6 +117,9 @@ const GerenciarEmpresa = () => {
                     />
                 </div>
             ))}
+            {empresas && empresas.length <= 0 && (
+                <p>Não possui empresas</p>
+            )}
         </div>
       </div>
       <div className="produtosEmpresaSelecionada"> 
@@ -169,7 +174,7 @@ const GerenciarEmpresa = () => {
             <div className={`editarProdutos ${opcao === 'editarProdutos' ? '' : 'disable'}`}>
                 <div className="produtosRestauranteGerenciarEmpresa">
                     {restaurante.produtos && restaurante.produtos.map((produto, index) => (
-                    <div key={index} >
+                    <div key={index} className='produtoEditar'>
                         <div 
                             className="produtoCadastradoGerenciarEmpresa" 
                             onClick={() => {
@@ -186,6 +191,9 @@ const GerenciarEmpresa = () => {
                         </div>
                     </div>
                     ))}
+                    {restaurante && !restaurante.produtos && (
+                        <p>Não possui produtos</p>
+                    )}
                     <ModalEditarProduto
                         isOpen={openModal}
                         closeModal={() => setOpenModal(closeModal)}

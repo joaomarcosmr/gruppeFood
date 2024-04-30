@@ -1,3 +1,141 @@
+@media only screen and (max-width: 600px) {
+    .gerenciarEmpresa{
+        display: block !important;
+        width: 100vw !important;
+        height: auto !important;
+    }
+
+    .empresasCadastradas{
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .empresaCadastrada{
+        margin: 0 auto;
+        max-height: 250px !important;
+        overflow-y: scroll;
+    }
+
+    .padrao{
+        width: 70%;
+    }
+
+    .empresa{
+        width: 80% !important;
+        height: 150px !important;
+    }
+
+    .produtosEmpresaSelecionada{
+        text-align: center;
+        margin: 0 auto;
+        width: 95% !important;
+        height: 100%;
+    }
+    
+    .produtosRestauranteGerenciarEmpresa{
+        padding: 10px !important;
+        grid-template-columns: auto !important;
+    }
+
+    .produtosEmpresaSelecionada .titulos{
+        margin-left: 12px !important;
+    }    
+    
+    .produtosEmpresa{
+        min-height: 600px !important;
+        max-height: 600px !important;
+        overflow-y: scroll;
+    }
+
+    .produtoCadastradoGerenciarEmpresa{
+        width: 90% !important;
+    }
+
+    .produtoCadastradoInfoGerenciarEmpresa{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .gerenciarEmpresa{
+        display: block !important;
+        width: 100vw !important;
+        height: auto !important;
+    }
+
+    .empresasCadastradas{
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .empresaCadastrada{
+        margin: 0 auto;
+        max-height: 250px !important;
+        overflow-y: scroll;
+    }
+
+    .padrao{
+        width: 70%;
+    }
+
+    .empresa{
+        width: 80% !important;
+        height: 150px !important;
+    }
+
+    .produtosEmpresaSelecionada{
+        text-align: center;
+        margin: 0 auto;
+        width: 95% !important;
+        height: 100%;
+    }
+    
+    .produtosRestauranteGerenciarEmpresa{
+        padding: 10px !important;
+        grid-template-columns: auto !important;
+    }
+
+    .produtosEmpresaSelecionada .titulos{
+        margin-left: 12px !important;
+    }    
+    
+    .produtosEmpresa{
+        min-height: 600px !important;
+        max-height: 600px !important;
+        overflow-y: scroll;
+    }
+
+    .produtoCadastradoGerenciarEmpresa{
+        width: 90% !important;
+    }
+
+    .produtoCadastradoInfoGerenciarEmpresa{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .produtosRestauranteGerenciarEmpresa {
+        grid-template-columns: auto auto !important;
+    }
+
+    .produtoCadastradoGerenciarEmpresa {
+        margin: 0 auto !important;
+        margin-bottom: 10px !important;
+        width: 25vw !important
+    }
+
+    .produtoCadastradoInfoGerenciarEmpresa {
+        width: 50% !important;
+    }
+
+    .produtosEmpresa{
+        margin-left: -20px !important;
+        width: 110% !important;
+    }
+}
+
+
 .gerenciarEmpresa{
     display: flex;
     flex-direction: row;

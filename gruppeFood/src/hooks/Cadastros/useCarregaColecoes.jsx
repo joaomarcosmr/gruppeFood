@@ -25,7 +25,7 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
                 if (search) {
                     q = query(
                         collectionRef,
-                        where("produtos", "array-contains", search),
+                        where("nomeRestaurante", "==", search),
                         orderBy("createdAt", "desc")
                     );
                 } else if (uid) {

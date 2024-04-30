@@ -4,6 +4,8 @@
     align-items: center;
     width: 60%;
     height: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .perfilUsuario img{
@@ -17,9 +19,13 @@
     display: flex;
     justify-content: center;
     width: 80%;
-    margin-top: 5px;
     padding-top: 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.detalhes{
+    margin-top: 50px;
+    margin-bottom: 80px;
 }
 
 .perfilInformacoesUsuario span{

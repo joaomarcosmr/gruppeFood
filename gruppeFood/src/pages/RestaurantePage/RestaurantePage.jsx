@@ -74,7 +74,9 @@ const RestaurantePage = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedid
             </div>
         </div>
         <div className="produtosRestaurante">
+          <div className="textHeader">
             <h3>Produtos</h3>
+          </div>
             <div className="sessaoProdutos">
             {empresa.produtos && empresa.produtos.map((produto, index) => (
                 <div className="produtoCadastrado" key={index} onClick={() => handleClick(produto)}>

@@ -1,3 +1,40 @@
+@media only screen and (max-width: 600px) {
+    .close {
+        margin: 0px !important;
+        padding: 0px !important;
+        padding-bottom: 10px !important;
+    }
+    .opcoes{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .opcoes button{
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .close {
+        margin: 0px !important;
+        padding: 0px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .opcoes{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .opcoes button{
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
 .modalCertezaExcluir{
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
