@@ -155,7 +155,6 @@
 
 .slider{
     display: flex;
-    overflow: hidden;
     margin-top: 35px;
     margin-bottom: 2px;
 }
@@ -233,7 +232,7 @@
 }
 
 .homeComidasRecomendadas{
-    margin-top: 20px;
+    margin-top: 40px;
     width: 80%;
 }
 
@@ -244,6 +243,7 @@
 .homeComidasConteudo{
     display: flex;
     max-width: 100vw;
+    overflow-x: scroll !important;
 }
 
 .comidasRecomendadas{
@@ -269,4 +269,12 @@
 .homeRestaurantesConteudo{
     display: grid;
     grid-template-columns: auto auto auto;
+}
+
+.homeComidasConteudo::-webkit-scrollbar-heigth {
+    height: 2px;
+}
+
+.homeComidasConteudo::-webkit-scrollbar-track {
+    background: transparent !important;
 }

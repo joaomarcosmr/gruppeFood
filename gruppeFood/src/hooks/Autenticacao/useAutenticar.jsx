@@ -7,6 +7,12 @@ export const useAutenticar = () => {
     const [error, setError] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const erros = [
+        {erro: 'email-already', mensagem: 'O e-mail utilizado já está cadastrado'},
+        {erro: 'password', mensagem: 'A senha precisa ter mais de 6 dígitos'},
+        {erro: 'invalid-credential', mensagem: 'Usuário ou senha inválido'}
+    ]
+
     const registrarConta = async (dados) => {
         setLoading(true);
         setError(null);
@@ -32,9 +38,16 @@ export const useAutenticar = () => {
             setLoading(false);
             return user;
         } catch (error) {
-            setError(error.message);
+            setError([])
+            console.log(error.message)
+
+            for(let i = 0; i < erros.length; i++){
+                if(error.message.includes(erros[i].erro)){
+                    setError(erros[i].mensagem)
+                }
+            }
+
             setLoading(false);
-            console.error('Erro ao registrar conta:', error); 
         }
     };
     
@@ -53,14 +66,18 @@ export const useAutenticar = () => {
             setLoading(null)
         } catch (error) {
             console.log(error.message)
+            setError([])
+
+            for(let i = 0; i < erros.length; i++){
+                if(error.message.includes(erros[i].erro)){
+                    setError(erros[i].mensagem)
+                }
+            }
+
             setLoading(false)
         }
     }
 
-    const sairDaConta = async (user) => {
-        
-    }
-    
     return {
         auth,
         logarConta,

@@ -33,7 +33,6 @@ const ModalEsqueciSenha = ({ isOpen, closeModal }) => {
 
             try {
                 await resetarSenha(email)
-                setLoading(false)
                 setMensagem('Um e-mail foi enviado com sucesso')
             } catch (error) {
                 console.error(error)

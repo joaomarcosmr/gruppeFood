@@ -3,22 +3,14 @@
         width: 100% !important;
         height: auto;
     }
-}
 
-@media only screen and (min-width: 600px) {
+    .modal-content-senha .close{
+        width: 30% !important;
+    }
 
-}
-
-@media only screen and (min-width: 768px) {
-
-}
-
-@media only screen and (min-width: 992px) {
-
-}
-
-@media only screen and (min-width: 1200px) {
-
+    .formRecuperacao{
+        width: 80% !important;
+    }
 }
 
 .modalEsqueciSenha{
@@ -45,6 +37,10 @@
     height: auto;
 }
 
+.modal-content-senha .close{
+    width: 10%;
+}
+
 .senha{
     width: 100%;
 }
@@ -54,6 +50,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .formRecuperacao span{

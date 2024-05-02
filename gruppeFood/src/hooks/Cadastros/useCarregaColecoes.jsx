@@ -22,12 +22,17 @@ export const useCarregaColecoes = (docCollection, search = null, uid = null) => 
             try {
                 let q;
 
+                console.log('pesquisa:', search)
+
                 if (search) {
                     q = query(
                         collectionRef,
+                        where("categoria", "==", search),
                         where("nomeRestaurante", "==", search),
                         orderBy("createdAt", "desc")
                     );
+
+                    console.log(q)
                 } else if (uid) {
                   q = await query(
                     collectionRef,

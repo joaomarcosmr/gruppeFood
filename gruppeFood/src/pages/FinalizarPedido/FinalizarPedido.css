@@ -20,7 +20,7 @@
     }
 
     .tabelaFinalizarPedido{
-        width: 120% !important;
+        width: 100% !important;
         max-height: 250px !important; 
     }
 }

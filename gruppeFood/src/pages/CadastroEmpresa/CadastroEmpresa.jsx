@@ -141,11 +141,11 @@ const CadastroEmpresa = () => {
                         </span>
                         <span >
                             Horario de abertura:
-                            <input type="number" placeholder='Horário que abre' required onChange={(e) => setHorarioAtendimentoAbertura(e.target.value)} />
+                            <input type="time" placeholder='Horário que abre: 08:30' required onChange={(e) => setHorarioAtendimentoAbertura(e.target.value)} />
                         </span>
                         <span >
                             Horario de fechamento:
-                            <input type="number" placeholder='Horário que fecha' required onChange={(e) => setHorarioAtendimentoFechamento(e.target.value)} />
+                            <input type="time" placeholder='Horário que fecha' required onChange={(e) => setHorarioAtendimentoFechamento(e.target.value)} />
                         </span>
                         <span>
                             Coloque uma foto de perfil

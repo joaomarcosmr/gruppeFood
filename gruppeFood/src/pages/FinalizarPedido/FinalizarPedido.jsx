@@ -9,7 +9,7 @@ const FinalizarPedido = ({ pedidoUsuario, setPedidoUsuario }) => {
     const [ loading, setLoading ] = useState(false)
     const [ endereco, setEndereco ] = useState('')
     const [subtotal, setSubtotal] = useState(0)
-    const { user } = useAuthValue()
+    const [mensagem, setMensagem] = useState('')
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const enderecoUsuario = queryParams.get('enderecoUser');
@@ -27,10 +27,25 @@ const FinalizarPedido = ({ pedidoUsuario, setPedidoUsuario }) => {
 
     useEffect(() => {
         setEndereco(enderecoUsuario)
+        setLoading(false)
     }, [pedidoUsuario])
 
     const enviarPedido = async() => {
         setLoading(true)
+        setMensagem('')
+
+        if(!endereco){
+            setMensagem('É preciso um endereço de entrega')
+            setLoading(false)
+            return
+        }
+
+        if(pedidoUsuario.length <= 0){
+            setMensagem('É preciso de algum produto para pedir')
+            setLoading(false)
+            return
+        }
+
         try {
             const pedidoFeito = await insertDocument(pedidoUsuario)
             setLoading(false)
@@ -75,6 +90,9 @@ const FinalizarPedido = ({ pedidoUsuario, setPedidoUsuario }) => {
             <button className='btnVerde finalizarPedido' onClick={() => enviarPedido()}>Finalizar Pedido</button>
             {loading && (
                 <p className='text-center'>Carregando...</p>
+            )}
+            {mensagem && (
+                <p className='text-center vermelho'>{mensagem}</p>
             )}
         </div>
         <div className="infoPedido">

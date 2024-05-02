@@ -10,7 +10,8 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) =>
 
   const { user } = useAuthValue()
   const navigate = useNavigate()
-  const { document: usuario, loading, error } = useCarregaDocumentos('users', user ? user.uid : null);
+  
+  const { document: usuario, loading, error } = useCarregaDocumentos('users', user && user.uid);
 
   useEffect(() => {
     let preco = 0
@@ -40,11 +41,13 @@ const ModalPedido = ({ isOpen, closeModal, pedidoUsuario, setPedidoUsuario }) =>
 
   const handleCheckout = () => {
     setRestauranteCarrinho(pedidoUsuario[0].restaurante)
-    pedidoUsuario.uid = usuario.uid
+    pedidoUsuario.uid = user.uid
 
     const queryParams = new URLSearchParams();
 
-    !user ? navigate('/login') : navigate(`/checkout?${queryParams.toString()}&enderecoUser=${usuario.userAddress}`);
+    !user && navigate('/login');
+
+    usuario ? navigate(`/checkout?${queryParams.toString()}&enderecoUser=${usuario.userAddress}`) : (navigate(`/checkout?${queryParams.toString()}`))
     closeModal()
   }
 

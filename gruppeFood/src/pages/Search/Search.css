@@ -1,5 +1,21 @@
+@media only screen and (min-width: 768px) {
+    .restaurantesResultados{
+        grid-template-columns: auto auto !important;
+    }
+
+    .empresaPesquisa{
+        width: 86%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .empresaPesquisa{
+        width: 90%;
+    }
+}
+
 .searchSection{
-    height: 50vh;
+    height: 100vh;
 }
 
 .searchResults{
@@ -8,7 +24,32 @@
 }
 
 .restaurantesResultados{
+    display: grid;
+    grid-template-columns: auto;
     width: 100%;
     margin-top: 30px;
-    height: 200px;
+    height: auto
+}
+
+.empresaPesquisa{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.empresaPesquisaImg{
+    width: 100px;
+    height: 100px;
+}
+
+.empresaPesquisaImg img{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.empresaPesquisaInfo{
+    margin-left: 20px;
 }

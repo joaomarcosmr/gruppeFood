@@ -28,14 +28,14 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
     const handleFilter = async(e) => {
         e.preventDefault()
 
-        navigate(`/search?${queryParams.toString()}&search=${pesquisa}`)
+        navigate(`/search?${queryParams.toString()}&search=${pesquisa}&pesquisa=nomeRestaurante`)
     }
     
     const slides = [
-        { search: 'Lanches', imgSrc: '../../src/img/hamburguer.png', label: 'Lanches' },
+        { search: 'Hamburguer', imgSrc: '../../src/img/hamburguer.png', label: 'Hamburguer' },
         { search: 'Pizza', imgSrc: '../../src/img/pizza.png', label: 'Pizza' },
-        { search: 'Japones', imgSrc: '../../src/img/sushi.png', label: 'Japones' },
-        { search: 'Salgadinho', imgSrc: '../../src/img/coxinha.png', label: 'Salgadinho' },
+        { search: 'Japonesa', imgSrc: '../../src/img/sushi.png', label: 'Japonesa' },
+        { search: 'Salgadinhos', imgSrc: '../../src/img/coxinha.png', label: 'Salgadinhos' },
         { search: 'Chines', imgSrc: '../../src/img/chines.png', label: 'Chines' }
     ];
   
@@ -53,7 +53,7 @@ const Home = ({setValorCarrinho, setNumItensCarrinho, setProdutoPedido, setPreco
             <div className="slider" >
                 {slides.map((slide, index) => (
                     <div key={index}>
-                        <Link to={`/search?search=${slide.search}`} className="sessaoCard">
+                        <Link to={`/search?search=${slide.search}&pesquisa=categoria`} className="sessaoCard">
                             <div className="cardComida">
                                 <div className="sessaoComida">
                                     <img src={slide.imgSrc} alt={slide.label} />

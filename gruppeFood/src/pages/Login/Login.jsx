@@ -59,18 +59,21 @@ const closeModal = () => {
           Cadastre Aqui
         </Link>
         {loading && (
-                    <span className='esqueciASenha'>
-                        Carregando...
-                    </span>
-                )}
-                {mensagem.length > 0 ? (
-                    <span className='sucesso'>
-                         <br/> Sucesso, redirecionando...
-                    </span>
-                ) : (
-                  <span className='esqueciASenha'>
-                    Se você esqueceu sua senha <span onClick={abrirModal} style={{cursor: 'pointer'}}><b>aperte aqui...</b></span>
-                  </span>
+              <span className='esqueciASenha'>
+                  Carregando...
+              </span>
+          )}
+          {error && (
+              <p className='vermelho textoErro'>{error}</p>
+          )}
+          {mensagem.length > 0 ? (
+              <span className='sucesso'>
+                    <br/> Sucesso, redirecionando...
+              </span>
+          ) : (
+            <span className='esqueciASenha'>
+              Se você esqueceu sua senha <span onClick={abrirModal} style={{cursor: 'pointer'}}><b>aperte aqui...</b></span>
+            </span>
           )}
           <ModalEsqueciSenha 
             isOpen={openModal}

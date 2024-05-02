@@ -63,6 +63,9 @@ const Register = () => {
                         Carregando...
                     </span>
                 )}
+                {error && (
+                    <p className='vermelho textoErro'>{error}</p>
+                )}
                 {mensagem.length > 0 ? (
                     <span className='sucesso'>
                         {mensagem} <br/> ir para login <Link to='/login'><b>aperte aqui...</b></Link>
